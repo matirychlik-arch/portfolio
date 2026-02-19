@@ -1196,13 +1196,15 @@ function openGallery(key) {
         const v = document.createElement('video');
         v.src = url;
         v.style.cssText = 'width:100%; height:auto; display:block; pointer-events:none;';
-        v.preload = 'metadata';
+        v.preload = 'auto';
         v.muted = true;
+        v.addEventListener('loadeddata', () => { v.currentTime = 0.01; });
+        v.addEventListener('seeked', () => { if (!v.dataset.playing) v.pause(); });
         const icon = document.createElement('div');
         icon.innerHTML = '▶';
         icon.style.cssText = 'position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:36px; color:rgba(255,255,255,0.7); pointer-events:none; transition:opacity 0.2s;';
-        cell.onmouseenter = () => { v.play().catch(()=>{}); icon.style.opacity = '0'; };
-        cell.onmouseleave = () => { v.pause(); v.currentTime = 0; icon.style.opacity = '1'; };
+        cell.onmouseenter = () => { v.dataset.playing = '1'; v.play().catch(()=>{}); icon.style.opacity = '0'; };
+        cell.onmouseleave = () => { delete v.dataset.playing; v.pause(); icon.style.opacity = '1'; };
         cell.appendChild(v);
         cell.appendChild(icon);
       } else {
