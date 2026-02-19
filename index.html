@@ -1023,7 +1023,7 @@ footer {
       <button onclick="closeGallery()" style="background:none; border:1px solid rgba(255,255,255,0.2); color:#fff; font-size:24px; width:44px; height:44px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;">×</button>
     </div>
     <div id="galleryDesc" style="display:none; font-family:var(--font-body,Georgia,serif); font-size:14px; line-height:1.8; color:rgba(255,255,255,0.7); margin-bottom:28px; max-width:720px; border-left:2px solid rgba(212,255,0,0.35); padding-left:20px;"></div>
-    <div id="galleryGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px;"></div>
+    <div id="galleryGrid" style="columns:3 260px; column-gap:12px;"></div>
   </div>
 </div>
 
@@ -1189,13 +1189,13 @@ function openGallery(key) {
     project.items.forEach((item, i) => {
       const url = buildUrl(item);
       const cell = document.createElement('div');
-      cell.style.cssText = 'aspect-ratio:16/9; overflow:hidden; border-radius:6px; cursor:pointer; background:#111; position:relative;';
+      cell.style.cssText = 'break-inside:avoid; margin-bottom:12px; overflow:hidden; border-radius:6px; cursor:pointer; background:#111; position:relative; display:block;';
       cell.onclick = () => openLightbox(key, i);
 
       if (project.type === 'video') {
         const v = document.createElement('video');
         v.src = url;
-        v.style.cssText = 'width:100%; height:100%; object-fit:cover; pointer-events:none;';
+        v.style.cssText = 'width:100%; height:auto; display:block; pointer-events:none;';
         v.preload = 'metadata';
         v.muted = true;
         const icon = document.createElement('div');
@@ -1209,9 +1209,9 @@ function openGallery(key) {
         const img = document.createElement('img');
         img.src = url;
         img.alt = '';
-        img.style.cssText = 'width:100%; height:100%; object-fit:cover; transition:transform 0.35s ease;';
-        cell.onmouseenter = () => img.style.transform = 'scale(1.05)';
-        cell.onmouseleave = () => img.style.transform = 'scale(1)';
+        img.style.cssText = 'width:100%; height:auto; display:block; transition:transform 0.35s ease;';
+        cell.onmouseenter = () => img.style.opacity = '0.85';
+        cell.onmouseleave = () => img.style.opacity = '1';
         cell.appendChild(img);
       }
 
