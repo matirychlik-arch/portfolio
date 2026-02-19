@@ -925,19 +925,19 @@ footer {
   <h2 class="section-title reveal">Wybrane <em>projekty</em></h2>
 
   <div class="work-grid">
-    <!-- Project 1: Large — AI Film Showreel -->
-    <div class="project-card project-card-large reveal" onclick="openGallery('showreel')" style="cursor:pointer;">
-      <div class="project-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); display:flex; align-items:center; justify-content:center;">
-        <span style="font-family:var(--font-display); font-size:48px; color:rgba(212,255,0,0.15); font-style:italic;">Reel placeholder</span>
+    <!-- Project 1: Large — The Knights of U & Cyrulicy -->
+    <div class="project-card project-card-large reveal" onclick="openGallery('knights')" style="cursor:pointer;">
+      <div class="project-image" style="padding:0; overflow:hidden; position:relative;">
+        <video src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/VIDEOS%20THE%20KNIGHTS%20OF%20U%20%26%20CYRULICY/Death%20Roads%20Tournament%20Out%20Now%20Full%20Release%20Trailer.mp4" autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; display:block;"></video>
       </div>
       <div class="project-info">
         <div class="project-tags">
-          <span class="project-tag">AI Video</span>
+          <span class="project-tag">Video</span>
+          <span class="project-tag">Commercial</span>
           <span class="project-tag">Motion</span>
-          <span class="project-tag">Film</span>
         </div>
-        <h3 class="project-name">AI Film Showreel 2025</h3>
-        <p class="project-desc">Kompilacja prac łączących narzędzia generatywne z filmowym podejściem do kadru, światła i narracji. Od konceptu do finalnego obrazu.</p>
+        <h3 class="project-name">The Knights of U & Cyrulicy</h3>
+        <p class="project-desc">Wideo reklamy i trailery — produkcja materiałów wideo dla firm gamingowych.</p>
       </div>
       <span class="project-arrow">↗</span>
     </div>
@@ -992,6 +992,24 @@ footer {
       </div>
       <span class="project-arrow">↗</span>
     </div>
+
+    <!-- AI Film Showreel — przeniesiony na dół -->
+    <!-- Project 1: Large — AI Film Showreel -->
+    <div class="project-card project-card-large reveal" onclick="openGallery('showreel')" style="cursor:pointer;">
+      <div class="project-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); display:flex; align-items:center; justify-content:center;">
+        <span style="font-family:var(--font-display); font-size:48px; color:rgba(212,255,0,0.15); font-style:italic;">Reel placeholder</span>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">AI Video</span>
+          <span class="project-tag">Motion</span>
+          <span class="project-tag">Film</span>
+        </div>
+        <h3 class="project-name">AI Film Showreel 2025</h3>
+        <p class="project-desc">Kompilacja prac łączących narzędzia generatywne z filmowym podejściem do kadru, światła i narracji. Od konceptu do finalnego obrazu.</p>
+      </div>
+      <span class="project-arrow">↗</span>
+    </div>
   </div>
 </section>
 
@@ -1026,6 +1044,22 @@ const PROJECTS = {
     title: 'AI Film Showreel 2025',
     type: 'images',
     items: []
+  },
+  knights: {
+    title: 'The Knights of U & Cyrulicy',
+    type: 'video',
+    items: [
+      'VIDEOS THE KNIGHTS OF U & CYRULICY/Burboneska poziom MAJ 2026.mp4',
+      'VIDEOS THE KNIGHTS OF U & CYRULICY/Cherry Bomb pion PAZDZIERNIK 2025.mp4',
+      'VIDEOS THE KNIGHTS OF U & CYRULICY/Death Roads Tournament Out Now Full Release Trailer.mp4',
+      'VIDEOS THE KNIGHTS OF U & CYRULICY/French pion MAJ 2026.mp4',
+      'VIDEOS THE KNIGHTS OF U & CYRULICY/W.A.N.D. Project Demo Teaser 2024 Steam Endless Replayability Fest - The Knights of U (1080p, h264).mp4',
+      'VIDEOS THE KNIGHTS OF U & CYRULICY/Wand Intro_temp.mp4',
+      'VIDEOS THE KNIGHTS OF U & CYRULICY/reklama YT.mp4',
+      'VIDEOS THE KNIGHTS OF U & CYRULICY/AQME_05IQHaEORqNVuArmVz04pmVverIuw_Ipl0B7-iZiZyFgmYlsi0pNHqzcc2U7vAgcyV90XKzawNaM5hsofbL6A8GFQMT_raWrhNZHPtn4g.mp4',
+      'VIDEOS THE KNIGHTS OF U & CYRULICY/AQOlgacvEEeRaPRQqAI0k-Q2TXmdj97QXOTir6bWTm5AE_HKjbaU9tyiutGAvMLrKZIItzxcf9Fnd-HCV7ogBAfZRRvdIdqgvJr_V4xGHcXaEg.mp4',
+      'VIDEOS THE KNIGHTS OF U & CYRULICY/AQPSex3oYBYVfGqIUjWRRl15s8gJx_d1LYvzyiVOObWoT45swkh1OruXPjVPGZL-9GaUeRG-P4tZAGP-8BOTz8mGtAaPk2Kq9wyV2UQMSMioZA.mp4'
+    ]
   },
   vidsy: {
     title: 'Kampanie Vidsy',
