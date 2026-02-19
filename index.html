@@ -1661,6 +1661,11 @@ window.addEventListener('scroll', () => {
 }
 .cv-right::-webkit-scrollbar { width: 3px; }
 .cv-right::-webkit-scrollbar-thumb { background: rgba(212,255,0,0.25); border-radius: 4px; }
+.cv-skills { margin-top: 24px; width: 100%; }
+.cv-skills-heading { font-family: var(--font-display, 'Helvetica Neue', sans-serif); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #D4FF00; margin: 0 0 12px 0; }
+.cv-skills-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.cv-skills-list li { font-family: var(--font-body, Georgia, serif); font-size: 12px; line-height: 1.6; color: rgba(255,255,255,0.75); padding-left: 14px; position: relative; }
+.cv-skills-list li::before { content: '•'; position: absolute; left: 0; color: #D4FF00; }
 .cv-close {
   position: absolute;
   top: 20px;
@@ -1745,6 +1750,16 @@ window.addEventListener('scroll', () => {
       <a class="cv-download-btn" href="#" onclick="alert('PDF będzie dostępny wkrótce'); return false;">
         <span style="font-size:15px;">↓</span> Pobierz PDF
       </a>
+      <div class="cv-skills">
+        <h3 class="cv-skills-heading">Umiejętności</h3>
+        <ul class="cv-skills-list">
+          <li>Szeroka wiedza z zakresu tradycyjnego tworzenia grafik i ilustracji 2D/motion</li>
+          <li>Biegłe poruszanie się w świecie filmu i wideo, umiejętność tworzenia koncepcji filmowych, jak i ich realizacja w duchu social mediów i nowoczesnych mediów</li>
+          <li>Biegła znajomość programów graficznych z pakietu Adobe Creative Suite, zwłaszcza Photoshopa i Illustratora oraz Figma i podobne</li>
+          <li>Biegła znajomość pracy z modelami językowymi GPT, Claude, Gemini</li>
+          <li>Dobra znajomość narzędzi AI do generowania grafiki, takich jak Higgsfield, Gemini, Kling i więcej</li>
+        </ul>
+      </div>
     </div>
     <div class="cv-right">
       <h2 class="cv-heading">List motywacyjny</h2>
