@@ -1302,7 +1302,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const kc = kv ? kv.closest('.project-card') : null;
   if (kc && kv) {
     kc.addEventListener('mouseenter', () => kv.play().catch(()=>{}));
-    kc.addEventListener('mouseleave', () => { kv.pause(); kv.currentTime = 0; });
+    kc.addEventListener('mouseleave', () => { kv.pause(); });
   }
 });
 </script>
