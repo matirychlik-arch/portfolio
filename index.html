@@ -165,27 +165,6 @@ nav {
               radial-gradient(ellipse 60% 50% at 20% 60%, rgba(255,255,255,0.02) 0%, transparent 60%);
 }
 
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1.8s ease;
-  z-index: 0;
-}
-
-.hero-slide.active {
-  opacity: 1;
-}
-
-.hero-slide-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.7) 100%);
-  z-index: 1;
-  pointer-events: none;
-}
 
 .hero-title {
   font-family: var(--font-display);
@@ -256,6 +235,48 @@ nav {
   width: 40px;
   height: 1px;
   background: var(--text-muted);
+}
+
+/* ============================================
+   HERO PHOTO STACK
+   ============================================ */
+.hero-stack {
+  position: absolute;
+  top: 50%;
+  right: 80px;
+  transform: translateY(-54%);
+  width: 260px;
+  height: 320px;
+  z-index: 2;
+}
+
+.hero-stack-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  transition: transform 0.4s var(--ease), z-index 0s;
+  will-change: transform;
+}
+
+.hero-stack-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  filter: brightness(0.88);
+  transition: filter 0.3s ease;
+}
+
+.hero-stack-card:hover {
+  z-index: 20 !important;
+}
+
+.hero-stack-card:hover img {
+  filter: brightness(1);
 }
 
 @keyframes slideUp {
@@ -893,17 +914,26 @@ footer {
      HERO
      ========================================== -->
 <section class="hero">
-  <div class="hero-bg">
-    <div class="hero-slide active" style="background-image:url('https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/1.jpeg')"></div>
-    <div class="hero-slide" style="background-image:url('https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/2.jpeg')"></div>
-    <div class="hero-slide" style="background-image:url('https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/3.jpeg')"></div>
-    <div class="hero-slide" style="background-image:url('https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/4.png')"></div>
-    <div class="hero-slide" style="background-image:url('https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/5.png')"></div>
-    <div class="hero-slide" style="background-image:url('https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/6.png')"></div>
-    <div class="hero-slide" style="background-image:url('https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/7.png')"></div>
-    <div class="hero-slide" style="background-image:url('https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/8.png')"></div>
-    <div class="hero-slide-overlay"></div>
+  <div class="hero-bg"></div>
+
+  <div class="hero-stack" id="heroStack">
+    <div class="hero-stack-card" style="transform:rotate(-6deg) translate(-12px, 10px); z-index:1;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/3.jpeg" alt="">
+    </div>
+    <div class="hero-stack-card" style="transform:rotate(4deg) translate(8px, -6px); z-index:2;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/7.png" alt="">
+    </div>
+    <div class="hero-stack-card" style="transform:rotate(-2deg) translate(-4px, 4px); z-index:3;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/5.png" alt="">
+    </div>
+    <div class="hero-stack-card" style="transform:rotate(2.5deg) translate(6px, -2px); z-index:4;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/2.jpeg" alt="">
+    </div>
+    <div class="hero-stack-card" style="transform:rotate(-1deg) translate(0px, 0px); z-index:5;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/1.jpeg" alt="">
+    </div>
   </div>
+
   <h1 class="hero-title">
     <span class="line hero-line-1"><span>AI Film</span></span>
     <span class="line hero-line-2"><span>Content</span></span>
@@ -1895,16 +1925,28 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape' && document.getElementById('cvOverlay').classList.contains('active')) closeCV();
 });
 
-// Hero slideshow
+// Hero photo stack — hover lift effect
 (function() {
-  const slides = document.querySelectorAll('.hero-slide');
-  let current = 0;
-  setInterval(() => {
-    slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
-  }, 4000);
+  const cards = document.querySelectorAll('.hero-stack-card');
+  const baseTransforms = Array.from(cards).map(c => c.style.transform);
+  const baseZIndexes  = Array.from(cards).map(c => parseInt(c.style.zIndex) || 1);
+  const TOP_Z = 20;
+
+  cards.forEach((card, i) => {
+    card.addEventListener('mouseenter', () => {
+      // Extract current rotate from base transform
+      const match = baseTransforms[i].match(/rotate\(([^)]+)\)/);
+      const rot = match ? match[1] : '0deg';
+      card.style.transform = `rotate(${rot}) translateY(-18px) scale(1.04)`;
+      card.style.zIndex = TOP_Z;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = baseTransforms[i];
+      card.style.zIndex = baseZIndexes[i];
+    });
+  });
 })();
+
 </script>
 </body>
 </html>
