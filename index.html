@@ -1226,7 +1226,9 @@ function openGallery(key) {
       const i = mediaIndex++;
       const url = buildUrl(item);
       const cell = document.createElement('div');
-      cell.style.cssText = 'break-inside:avoid; margin-bottom:12px; overflow:hidden; border-radius:6px; cursor:pointer; background:#111; position:relative; display:block;';
+      const isVideo = project.type === 'video';
+      cell.style.cssText = 'break-inside:avoid; margin-bottom:12px; overflow:hidden; border-radius:6px; cursor:pointer; background:#111; position:relative; display:block;'
+        + (isVideo ? ' aspect-ratio:16/9;' : '');
       cell.onclick = () => openLightbox(key, i);
 
       if (project.type === 'video') {
