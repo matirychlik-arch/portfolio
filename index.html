@@ -1055,7 +1055,7 @@ const PROJECTS = {
   knights: {
     title: 'The Knights of U & Cyrulicy',
     type: 'video',
-    desc: '<strong style="color:#fff;">The Knights of Unity</strong><br>Tworzenie grafik z wykorzystaniem AI oraz promptów do generowania grafik i wideo. Tworzenie trailerów i spotów reklamowych dla gier własnych oraz wydawanych przez spółkę — zarówno własnoręcznie jak i kierując zespołami grafików 2D i 3D. Reżyseria, scenariusz, całościowe koncepcje i realizacja. Opracowywanie elementów identyfikacji wizualnej spółki. Praca konceptualna nad projektami wydawniczymi (gry wideo). Monitorowanie trendów marketingowych i wdrażanie ich w codzienne działania.',
+    desc: '<span style="font-family:var(--font-display);font-size:clamp(20px,3vw,32px);color:#fff;font-style:italic;display:block;margin-bottom:8px;">The Knights of Unity</span>Tworzenie grafik z wykorzystaniem AI oraz promptów do generowania grafik i wideo. Tworzenie trailerów i spotów reklamowych dla gier własnych oraz wydawanych przez spółkę — zarówno własnoręcznie jak i kierując zespołami grafików 2D i 3D. Reżyseria, scenariusz, całościowe koncepcje i realizacja. Opracowywanie elementów identyfikacji wizualnej spółki. Praca konceptualna nad projektami wydawniczymi (gry wideo). Monitorowanie trendów marketingowych i wdrażanie ich w codzienne działania.',
     items: [
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Death Roads trailer 2.mp4', caption: 'Kierowanie całością produkcji — od koncepcji kreatywnej przez reżyserię, po montaż i sound design. Koordynacja zespołu grafików, integracja assetów z silnika gry, nadzór nad spójnością wizualną i finalną obróbką.' },
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Death Roads trailer 3.mp4', caption: 'Opracowanie koncepcji wideo i kierowanie procesem produkcyjnym. Nadzór nad grafikami 3D, koordynacja ich pracy z wizją projektu. Montaż, sound design, korekcja barwna, przygotowanie do dystrybucji.' },
@@ -1217,7 +1217,7 @@ function openGallery(key) {
         sep.style.cssText = 'margin:32px 0 16px; padding-top:24px;'
           + (item.divider ? 'border-top:1px solid rgba(255,255,255,0.1);' : '');
         if (item.divider) {
-          sep.innerHTML = '<h3 style="font-family:var(--font-display,\'Helvetica Neue\',sans-serif);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#D4FF00;margin:0 0 8px;">' + item.divider + '</h3>'
+          sep.innerHTML = '<h3 style="font-family:var(--font-display,\'Helvetica Neue\',sans-serif);font-size:clamp(20px,3vw,32px);color:#fff;font-style:italic;margin:0 0 8px;">' + item.divider + '</h3>'
             + (item.desc ? '<p style="font-family:var(--font-body,Georgia,serif);font-size:13px;line-height:1.7;color:rgba(255,255,255,0.6);margin:0;">' + item.desc + '</p>' : '');
         }
         grid.appendChild(sep);
