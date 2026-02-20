@@ -1241,42 +1241,18 @@ function openGallery(key) {
       if (project.type === 'video') {
         const v = document.createElement('video');
         v.src = url;
+        v.crossOrigin = 'anonymous';
         v.style.cssText = 'width:100%; height:auto; display:block; pointer-events:none;';
         v.preload = 'auto';
         v.muted = true;
-
-        const canvas = document.createElement('canvas');
-        canvas.style.cssText = 'position:absolute; inset:0; width:100%; height:100%; pointer-events:none; transition:opacity 0.2s;';
-        canvas.style.opacity = '0';
-
         v.addEventListener('loadeddata', () => { v.currentTime = 0.01; });
-        v.addEventListener('seeked', () => {
-          if (!v.dataset.playing) {
-            v.pause();
-            canvas.width = v.videoWidth;
-            canvas.height = v.videoHeight;
-            canvas.getContext('2d').drawImage(v, 0, 0, canvas.width, canvas.height);
-            canvas.style.opacity = '1';
-          }
-        });
-
+        v.addEventListener('seeked', () => { if (!v.dataset.playing) v.pause(); });
         const icon = document.createElement('div');
         icon.innerHTML = '▶';
         icon.style.cssText = 'position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:36px; color:rgba(255,255,255,0.7); pointer-events:none; transition:opacity 0.2s;';
-        cell.onmouseenter = () => {
-          v.dataset.playing = '1';
-          canvas.style.opacity = '0';
-          icon.style.opacity = '0';
-          v.play().catch(()=>{});
-        };
-        cell.onmouseleave = () => {
-          delete v.dataset.playing;
-          v.pause();
-          canvas.style.opacity = '1';
-          icon.style.opacity = '1';
-        };
+        cell.onmouseenter = () => { v.dataset.playing = '1'; v.play().catch(()=>{}); icon.style.opacity = '0'; };
+        cell.onmouseleave = () => { delete v.dataset.playing; v.pause(); icon.style.opacity = '1'; };
         cell.appendChild(v);
-        cell.appendChild(canvas);
         cell.appendChild(icon);
       } else {
         const img = document.createElement('img');
