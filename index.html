@@ -1048,9 +1048,11 @@ const BASE = 'https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/
 const PROJECTS = {
   showreel: {
     title: 'AI Film Showreel 2025',
-    type: 'images',
+    type: 'video',
     desc: '',
-    items: []
+    items: [
+      { src: 'ai showreel.mp4', caption: '' }
+    ]
   },
   knights: {
     title: 'The Knights of U & Cyrulicy',
@@ -1197,10 +1199,12 @@ function openGallery(key) {
   if (mediaItems.length === 0 && !project.items.some(x => typeof x === 'object')) {
     grid.innerHTML = '<p style="color:rgba(255,255,255,0.4); font-family:var(--font-mono); text-align:center; padding:80px 0;">Wkrótce — materiały w przygotowaniu</p>';
   } else {
+    const videoCount = project.items.filter(x => typeof x === 'string' || (typeof x === 'object' && x.src)).length;
     function createSectionGrid(type) {
       const g = document.createElement('div');
       if (type === 'video') {
-        g.style.cssText = 'display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:0; width:100%; align-items:start;';
+        const cols = videoCount === 1 ? '1fr' : 'repeat(3,1fr)';
+        g.style.cssText = 'display:grid; grid-template-columns:' + cols + '; gap:12px; margin-bottom:0; width:100%; align-items:start;';
       } else {
         g.style.cssText = 'columns:3 260px; column-gap:12px; margin-bottom:0;';
       }
