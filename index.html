@@ -1233,7 +1233,7 @@ function openGallery(key) {
       const cell = document.createElement('div');
       const isVideo = project.type === 'video';
       if (isVideo) {
-        cell.style.cssText = 'overflow:hidden; border-radius:6px; cursor:pointer; background:#111; position:relative; min-width:0;';
+        cell.style.cssText = 'overflow:hidden; border-radius:6px; cursor:pointer; background:#111; position:relative; min-width:0; max-height:200px;';
       } else {
         cell.style.cssText = 'break-inside:avoid; margin-bottom:12px; overflow:hidden; border-radius:6px; cursor:pointer; background:#111; position:relative; display:block;';
       }
@@ -1242,7 +1242,7 @@ function openGallery(key) {
       if (project.type === 'video') {
         const v = document.createElement('video');
         v.src = url;
-        v.style.cssText = 'width:100%; height:auto; display:block; pointer-events:none;';
+        v.style.cssText = 'width:100%; height:100%; display:block; pointer-events:none; object-fit:contain;';
         v.preload = 'auto';
         v.muted = true;
         v.addEventListener('loadeddata', () => { v.currentTime = 0.01; });
