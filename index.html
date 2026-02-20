@@ -1023,7 +1023,7 @@ footer {
       <button onclick="closeGallery()" style="background:none; border:1px solid rgba(255,255,255,0.2); color:#fff; font-size:24px; width:44px; height:44px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;">×</button>
     </div>
     <div id="galleryDesc" style="display:none; font-family:var(--font-body,Georgia,serif); font-size:14px; line-height:1.8; color:rgba(255,255,255,0.7); margin-bottom:28px; max-width:720px; border-left:2px solid rgba(212,255,0,0.35); padding-left:20px;"></div>
-    <div id="galleryGrid" style="columns:3 260px; column-gap:12px;"></div>
+    <div id="galleryGrid"></div>
   </div>
 </div>
 
@@ -1196,20 +1196,30 @@ function openGallery(key) {
 
   const mediaItems = project.items.filter(x => typeof x === 'string' || (typeof x === 'object' && x.src));
   if (mediaItems.length === 0 && !project.items.some(x => typeof x === 'object')) {
-    grid.innerHTML = '<p style="color:rgba(255,255,255,0.4); font-family:var(--font-mono); grid-column:1/-1; text-align:center; padding:80px 0;">Wkrótce — materiały w przygotowaniu</p>';
+    grid.innerHTML = '<p style="color:rgba(255,255,255,0.4); font-family:var(--font-mono); text-align:center; padding:80px 0;">Wkrótce — materiały w przygotowaniu</p>';
   } else {
+    function createSectionGrid() {
+      const g = document.createElement('div');
+      g.style.cssText = 'columns:3 260px; column-gap:12px; margin-bottom:0;';
+      return g;
+    }
+    let currentSectionGrid = createSectionGrid();
+    grid.appendChild(currentSectionGrid);
+
     let mediaIndex = 0;
     project.items.forEach((item) => {
-      // Obsługa dividerów (separatory sekcji)
+      // Obsługa dividerów — wstawiamy POZA columns, tworzymy nowy kontener kolumn
       if (typeof item === 'object' && item.divider !== undefined) {
         const sep = document.createElement('div');
-        sep.style.cssText = 'column-span:all; margin:32px 0 16px; padding-top:24px;'
+        sep.style.cssText = 'margin:32px 0 16px; padding-top:24px;'
           + (item.divider ? 'border-top:1px solid rgba(255,255,255,0.1);' : '');
         if (item.divider) {
           sep.innerHTML = '<h3 style="font-family:var(--font-display,\'Helvetica Neue\',sans-serif);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#D4FF00;margin:0 0 8px;">' + item.divider + '</h3>'
             + (item.desc ? '<p style="font-family:var(--font-body,Georgia,serif);font-size:13px;line-height:1.7;color:rgba(255,255,255,0.6);margin:0;">' + item.desc + '</p>' : '');
         }
         grid.appendChild(sep);
+        currentSectionGrid = createSectionGrid();
+        grid.appendChild(currentSectionGrid);
         return;
       }
 
@@ -1244,7 +1254,7 @@ function openGallery(key) {
         cell.appendChild(img);
       }
 
-      grid.appendChild(cell);
+      currentSectionGrid.appendChild(cell);
     });
   }
 
