@@ -252,8 +252,6 @@ nav {
 
 .hero-stack-card {
   position: absolute;
-  width: 300px;
-  height: 169px;
   border-radius: 4px;
   overflow: hidden;
   cursor: grab;
@@ -1967,10 +1965,11 @@ document.addEventListener('keydown', function(e) {
   ];
 
   function init() {
-    const W = hero.offsetWidth;
-    const H = hero.offsetHeight;
-    const cardW = 300;
-    const cardH = 169;
+    const W     = hero.offsetWidth;
+    const H     = hero.offsetHeight;
+    // Karta = 22% szerokości hero, proporcje 16:9
+    const cardW = Math.round(W * 0.22);
+    const cardH = Math.round(cardW * 9 / 16);
 
     cards.forEach((card, i) => {
       const [lp, tp, rot] = startPositions[i] || [0.5 + Math.random()*0.3, Math.random()*0.7, (Math.random()-0.5)*30];
@@ -1979,6 +1978,8 @@ document.addEventListener('keydown', function(e) {
 
       hero.appendChild(card);
       card.style.position  = 'absolute';
+      card.style.width     = cardW + 'px';
+      card.style.height    = cardH + 'px';
       card.style.left      = left + 'px';
       card.style.top       = top  + 'px';
       card.style.transform = `rotate(${rot}deg)`;
@@ -1988,6 +1989,29 @@ document.addEventListener('keydown', function(e) {
 
     stack.style.display = 'none';
   }
+
+  // Przelicz pozycje i rozmiary przy resize
+  function onResize() {
+    stopWiggle();
+    const W     = hero.offsetWidth;
+    const H     = hero.offsetHeight;
+    const cardW = Math.round(W * 0.22);
+    const cardH = Math.round(cardW * 9 / 16);
+
+    cards.forEach((card, i) => {
+      const [lp, tp] = startPositions[i] || [0.5, 0.5];
+      card.style.width  = cardW + 'px';
+      card.style.height = cardH + 'px';
+      card.style.left   = (lp * W - cardW / 2) + 'px';
+      card.style.top    = (tp * H - cardH / 2) + 'px';
+    });
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(onResize, 150);
+  });
 
   function clamp(val, min, max) { return Math.min(Math.max(val, min), max); }
 
