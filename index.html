@@ -1943,58 +1943,102 @@ document.addEventListener('keydown', function(e) {
 
 // Hero photo stack — drag & drop na stole roboczym
 (function() {
-  const hero    = document.querySelector('.hero');
-  const stack   = document.getElementById('heroStack');
-  const cards   = Array.from(document.querySelectorAll('.hero-stack-card'));
-  let topZ      = 10;
-  let dragging  = null;
+  const hero  = document.querySelector('.hero');
+  const stack = document.getElementById('heroStack');
+  const cards = Array.from(document.querySelectorAll('.hero-stack-card'));
+  let topZ    = 10;
+  let dragging = null;
   let startMouseX, startMouseY, startLeft, startTop;
+  let wiggleActive = false;
+  let wiggleTimers = [];
 
-  // Inicjalizacja: ustaw karty jako absolutnie w `.hero` (przenosimy ze stack do hero)
+  // Pozycje startowe — rozrzucone po prawej połowie hero
+  // [leftPercent, topPercent, rot]
+  const startPositions = [
+    [0.52, 0.08,  -18],
+    [0.70, 0.05,   14],
+    [0.85, 0.12,   -7],
+    [0.55, 0.32,   22],
+    [0.75, 0.28,  -12],
+    [0.62, 0.52,    9],
+    [0.82, 0.48,  -20],
+    [0.50, 0.62,   16],
+  ];
+
   function init() {
-    const heroRect  = hero.getBoundingClientRect();
-    const stackRect = stack.getBoundingClientRect();
+    const W = hero.offsetWidth;
+    const H = hero.offsetHeight;
+    const cardW = 300;
+    const cardH = 169;
 
-    cards.forEach(card => {
-      const cardRect = card.getBoundingClientRect();
-      // Oblicz pozycję karty względem hero
-      const left = cardRect.left - heroRect.left;
-      const top  = cardRect.top  - heroRect.top;
-      const rot  = parseFloat(card.dataset.rot) || 0;
+    cards.forEach((card, i) => {
+      const [lp, tp, rot] = startPositions[i] || [0.5 + Math.random()*0.3, Math.random()*0.7, (Math.random()-0.5)*30];
+      const left = lp * W - cardW / 2;
+      const top  = tp * H - cardH / 2;
 
-      // Przenieś kartę do hero
       hero.appendChild(card);
       card.style.position  = 'absolute';
       card.style.left      = left + 'px';
       card.style.top       = top  + 'px';
       card.style.transform = `rotate(${rot}deg)`;
       card.style.margin    = '0';
+      card.dataset.rot     = rot;
     });
 
-    // Stack kontener już nie potrzebny widocznie
     stack.style.display = 'none';
   }
 
-  function clamp(val, min, max) {
-    return Math.min(Math.max(val, min), max);
+  function clamp(val, min, max) { return Math.min(Math.max(val, min), max); }
+
+  // Wiggle — subtelny ruch każdej karty gdy hero jest hovered
+  function startWiggle() {
+    if (wiggleActive) return;
+    wiggleActive = true;
+    cards.forEach((card, i) => {
+      function jiggle() {
+        if (!wiggleActive || dragging === card) return;
+        const rot = parseFloat(card.dataset.rot) || 0;
+        const dx  = (Math.random() - 0.5) * 6;
+        const dy  = (Math.random() - 0.5) * 6;
+        const dr  = (Math.random() - 0.5) * 4;
+        card.style.transition = 'transform 0.6s ease, left 0.6s ease, top 0.6s ease';
+        card.style.left      = (parseFloat(card.style.left) + dx) + 'px';
+        card.style.top       = (parseFloat(card.style.top)  + dy) + 'px';
+        card.style.transform = `rotate(${rot + dr}deg)`;
+        wiggleTimers[i] = setTimeout(jiggle, 600 + Math.random() * 800);
+      }
+      wiggleTimers[i] = setTimeout(jiggle, i * 120);
+    });
   }
 
+  function stopWiggle() {
+    wiggleActive = false;
+    wiggleTimers.forEach(t => clearTimeout(t));
+    wiggleTimers = [];
+    cards.forEach(card => {
+      if (card === dragging) return;
+      const rot = parseFloat(card.dataset.rot) || 0;
+      card.style.transition = 'transform 0.4s ease';
+      card.style.transform  = `rotate(${rot}deg)`;
+    });
+  }
+
+  hero.addEventListener('mouseenter', startWiggle);
+  hero.addEventListener('mouseleave', stopWiggle);
+
+  // Drag
   function onMouseDown(e) {
     if (e.button !== 0) return;
     const card = e.currentTarget;
     dragging = card;
-
-    // Wysuń na wierzch
     topZ++;
-    card.style.zIndex = topZ;
+    card.style.zIndex    = topZ;
+    card.style.transition = 'none';
     card.classList.add('dragging');
-
-    const rect = card.getBoundingClientRect();
     startMouseX = e.clientX;
     startMouseY = e.clientY;
     startLeft   = parseFloat(card.style.left);
     startTop    = parseFloat(card.style.top);
-
     e.preventDefault();
   }
 
@@ -2003,34 +2047,28 @@ document.addEventListener('keydown', function(e) {
     const heroRect = hero.getBoundingClientRect();
     const dx = e.clientX - startMouseX;
     const dy = e.clientY - startMouseY;
-
     const cardW = dragging.offsetWidth;
     const cardH = dragging.offsetHeight;
-    const maxLeft = heroRect.width  - cardW * 0.3;   // może wyjść trochę za prawą
-    const maxTop  = heroRect.height - cardH * 0.3;
-
-    const newLeft = clamp(startLeft + dx, -cardW * 0.3, maxLeft);
-    const newTop  = clamp(startTop  + dy, -cardH * 0.3, maxTop);
-
-    dragging.style.left = newLeft + 'px';
-    dragging.style.top  = newTop  + 'px';
+    dragging.style.left = clamp(startLeft + dx, -cardW * 0.3, heroRect.width  - cardW * 0.7) + 'px';
+    dragging.style.top  = clamp(startTop  + dy, -cardH * 0.3, heroRect.height - cardH * 0.7) + 'px';
   }
 
   function onMouseUp() {
     if (!dragging) return;
+    // Zapisz nową pozycję jako bazową rotację (kąt bez zmian)
     dragging.classList.remove('dragging');
     dragging = null;
   }
 
-  // Touch support
+  // Touch
   function onTouchStart(e) {
     const touch = e.touches[0];
     const card  = e.currentTarget;
     dragging    = card;
     topZ++;
-    card.style.zIndex = topZ;
+    card.style.zIndex    = topZ;
+    card.style.transition = 'none';
     card.classList.add('dragging');
-
     startMouseX = touch.clientX;
     startMouseY = touch.clientY;
     startLeft   = parseFloat(card.style.left);
@@ -2044,14 +2082,10 @@ document.addEventListener('keydown', function(e) {
     const heroRect = hero.getBoundingClientRect();
     const dx = touch.clientX - startMouseX;
     const dy = touch.clientY - startMouseY;
-
-    const cardW  = dragging.offsetWidth;
-    const cardH  = dragging.offsetHeight;
-    const maxLeft = heroRect.width  - cardW * 0.3;
-    const maxTop  = heroRect.height - cardH * 0.3;
-
-    dragging.style.left = clamp(startLeft + dx, -cardW * 0.3, maxLeft) + 'px';
-    dragging.style.top  = clamp(startTop  + dy, -cardH * 0.3, maxTop)  + 'px';
+    const cardW = dragging.offsetWidth;
+    const cardH = dragging.offsetHeight;
+    dragging.style.left = clamp(startLeft + dx, -cardW * 0.3, heroRect.width  - cardW * 0.7) + 'px';
+    dragging.style.top  = clamp(startTop  + dy, -cardH * 0.3, heroRect.height - cardH * 0.7) + 'px';
     e.preventDefault();
   }
 
@@ -2061,7 +2095,6 @@ document.addEventListener('keydown', function(e) {
     dragging = null;
   }
 
-  // Podepnij eventy do kart
   cards.forEach(card => {
     card.addEventListener('mousedown',  onMouseDown);
     card.addEventListener('touchstart', onTouchStart, { passive: false });
@@ -2072,7 +2105,6 @@ document.addEventListener('keydown', function(e) {
   document.addEventListener('mousemove', onMouseMove);
   document.addEventListener('mouseup',   onMouseUp);
 
-  // Uruchom po załadowaniu layoutu
   window.addEventListener('load', init);
 })();
 
