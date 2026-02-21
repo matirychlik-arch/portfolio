@@ -284,6 +284,51 @@ nav {
   filter: brightness(1);
 }
 
+/* ============================================
+   MOBILE — stół roboczy wyłączony
+   ============================================ */
+@media (max-width: 768px) {
+  .hero-stack-card {
+    display: none !important;
+  }
+
+  .hero-mobile-stack {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .hero-mobile-stack {
+    display: none;
+  }
+}
+
+.hero-mobile-stack {
+  position: absolute;
+  top: 32px;
+  right: -20px;
+  width: 180px;
+  height: 101px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-mobile-stack-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+}
+
+.hero-mobile-stack-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.85);
+}
+
 @keyframes slideUp {
   from { transform: translateY(110%); }
   to { transform: translateY(0); }
@@ -954,6 +999,19 @@ footer {
     </div>
     <div class="hero-stack-card" data-rot="-6" style="left:2px; top:8px; transform:rotate(-6deg); z-index:5;">
       <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/11.jpeg" alt="" draggable="false">
+    </div>
+  </div>
+
+  <!-- Mobile static stack — tylko na małych ekranach -->
+  <div class="hero-mobile-stack">
+    <div class="hero-mobile-stack-card" style="transform:rotate(-12deg) translate(-8px, 10px);">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/3.jpeg" alt="">
+    </div>
+    <div class="hero-mobile-stack-card" style="transform:rotate(8deg) translate(6px, -6px);">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/9.png" alt="">
+    </div>
+    <div class="hero-mobile-stack-card" style="transform:rotate(-3deg) translate(0, 0);">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/1.jpeg" alt="">
     </div>
   </div>
 
