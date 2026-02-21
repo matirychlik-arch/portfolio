@@ -946,6 +946,15 @@ footer {
     <div class="hero-stack-card" data-rot="2" style="left:3px; top:-3px; transform:rotate(2deg); z-index:8;">
       <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/1.jpeg" alt="" draggable="false">
     </div>
+    <div class="hero-stack-card" data-rot="-11" style="left:6px; top:6px; transform:rotate(-11deg); z-index:9;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/9.png" alt="" draggable="false">
+    </div>
+    <div class="hero-stack-card" data-rot="17" style="left:-4px; top:-4px; transform:rotate(17deg); z-index:10;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/10.png" alt="" draggable="false">
+    </div>
+    <div class="hero-stack-card" data-rot="-6" style="left:2px; top:8px; transform:rotate(-6deg); z-index:11;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/11.jpeg" alt="" draggable="false">
+    </div>
   </div>
 
   <h1 class="hero-title">
@@ -1954,14 +1963,17 @@ document.addEventListener('keydown', function(e) {
   // kolejność kart: 8.png, 6.png, 3.jpeg, 5.png, 7.png, 2.jpeg, 4.png, 1.jpeg
   // [leftPercent, topPercent, rot]
   const startPositions = [
-    [0.78, 0.17,  -20],   // 8.png  — góra prawa, mocno obrócona
-    [0.58, 0.20,    8],   // 6.png  — góra środek-prawa
-    [0.72, 0.42,   15],   // 3.jpeg — prawy środek
-    [0.50, 0.37,   -5],   // 5.png  — środek
-    [0.68, 0.67,  -12],   // 7.png  — dolna prawa
-    [0.52, 0.64,   18],   // 2.jpeg — dolna środek
-    [0.40, 0.50,    6],   // 4.png  — lewa środek
-    [0.56, 0.47,    2],   // 1.jpeg — na wierzchu, prawie prosto
+    [0.80, 0.15,  -20],   // 8.png
+    [0.57, 0.18,    8],   // 6.png
+    [0.74, 0.40,   15],   // 3.jpeg
+    [0.49, 0.34,   -5],   // 5.png
+    [0.70, 0.68,  -12],   // 7.png
+    [0.51, 0.65,   18],   // 2.jpeg
+    [0.38, 0.50,    6],   // 4.png
+    [0.57, 0.46,    2],   // 1.jpeg
+    [0.76, 0.22,  -11],   // 9.png
+    [0.44, 0.24,   17],   // 10.png
+    [0.63, 0.58,   -6],   // 11.jpeg
   ];
 
   function init() {
