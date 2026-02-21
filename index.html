@@ -252,14 +252,23 @@ nav {
 
 .hero-stack-card {
   position: absolute;
-  width: 380px;
-  height: 214px;
+  width: 300px;
+  height: 169px;
   border-radius: 4px;
   overflow: hidden;
-  cursor: pointer;
+  cursor: grab;
   box-shadow: 0 12px 40px rgba(0,0,0,0.7);
-  transition: transform 0.4s var(--ease);
+  transition: box-shadow 0.2s ease, filter 0.2s ease;
   will-change: transform;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.hero-stack-card.dragging {
+  cursor: grabbing;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.9);
+  filter: brightness(1.05);
+  transition: none;
 }
 
 .hero-stack-card img {
@@ -270,6 +279,7 @@ nav {
   pointer-events: none;
   filter: brightness(0.85);
   transition: filter 0.3s ease;
+  draggable: false;
 }
 
 .hero-stack-card:hover img {
@@ -914,29 +924,29 @@ footer {
   <div class="hero-bg"></div>
 
   <div class="hero-stack" id="heroStack">
-    <div class="hero-stack-card" style="transform:rotate(-15deg) translate(-60px, 40px); z-index:1;">
-      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/8.png" alt="">
+    <div class="hero-stack-card" data-rot="-15" style="left:0; top:0; transform:rotate(-15deg); z-index:1;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/8.png" alt="" draggable="false">
     </div>
-    <div class="hero-stack-card" style="transform:rotate(12deg) translate(30px, -50px); z-index:2;">
-      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/6.png" alt="">
+    <div class="hero-stack-card" data-rot="12" style="left:20px; top:-30px; transform:rotate(12deg); z-index:2;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/6.png" alt="" draggable="false">
     </div>
-    <div class="hero-stack-card" style="transform:rotate(-9deg) translate(-40px, 30px); z-index:3;">
-      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/3.jpeg" alt="">
+    <div class="hero-stack-card" data-rot="-9" style="left:-15px; top:20px; transform:rotate(-9deg); z-index:3;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/3.jpeg" alt="" draggable="false">
     </div>
-    <div class="hero-stack-card" style="transform:rotate(10deg) translate(20px, -30px); z-index:4;">
-      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/5.png" alt="">
+    <div class="hero-stack-card" data-rot="10" style="left:10px; top:-15px; transform:rotate(10deg); z-index:4;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/5.png" alt="" draggable="false">
     </div>
-    <div class="hero-stack-card" style="transform:rotate(-13deg) translate(-25px, 20px); z-index:5;">
-      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/7.png" alt="">
+    <div class="hero-stack-card" data-rot="-13" style="left:-10px; top:12px; transform:rotate(-13deg); z-index:5;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/7.png" alt="" draggable="false">
     </div>
-    <div class="hero-stack-card" style="transform:rotate(7deg) translate(15px, -15px); z-index:6;">
-      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/2.jpeg" alt="">
+    <div class="hero-stack-card" data-rot="7" style="left:8px; top:-8px; transform:rotate(7deg); z-index:6;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/2.jpeg" alt="" draggable="false">
     </div>
-    <div class="hero-stack-card" style="transform:rotate(-4deg) translate(-10px, 8px); z-index:7;">
-      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/4.png" alt="">
+    <div class="hero-stack-card" data-rot="-4" style="left:-5px; top:5px; transform:rotate(-4deg); z-index:7;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/4.png" alt="" draggable="false">
     </div>
-    <div class="hero-stack-card" style="transform:rotate(2deg) translate(5px, -4px); z-index:8;">
-      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/1.jpeg" alt="">
+    <div class="hero-stack-card" data-rot="2" style="left:3px; top:-3px; transform:rotate(2deg); z-index:8;">
+      <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/1.jpeg" alt="" draggable="false">
     </div>
   </div>
 
@@ -1931,26 +1941,139 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape' && document.getElementById('cvOverlay').classList.contains('active')) closeCV();
 });
 
-// Hero photo stack — hover lift effect
+// Hero photo stack — drag & drop na stole roboczym
 (function() {
-  const cards = document.querySelectorAll('.hero-stack-card');
-  const baseTransforms = Array.from(cards).map(c => c.style.transform);
-  const baseZIndexes  = Array.from(cards).map(c => parseInt(c.style.zIndex) || 1);
-  const TOP_Z = 20;
+  const hero    = document.querySelector('.hero');
+  const stack   = document.getElementById('heroStack');
+  const cards   = Array.from(document.querySelectorAll('.hero-stack-card'));
+  let topZ      = 10;
+  let dragging  = null;
+  let startMouseX, startMouseY, startLeft, startTop;
 
-  cards.forEach((card, i) => {
-    card.addEventListener('mouseenter', () => {
-      // Extract current rotate from base transform
-      const match = baseTransforms[i].match(/rotate\(([^)]+)\)/);
-      const rot = match ? match[1] : '0deg';
-      card.style.transform = `rotate(${rot}) translateY(-18px) scale(1.04)`;
-      card.style.zIndex = TOP_Z;
+  // Inicjalizacja: ustaw karty jako absolutnie w `.hero` (przenosimy ze stack do hero)
+  function init() {
+    const heroRect  = hero.getBoundingClientRect();
+    const stackRect = stack.getBoundingClientRect();
+
+    cards.forEach(card => {
+      const cardRect = card.getBoundingClientRect();
+      // Oblicz pozycję karty względem hero
+      const left = cardRect.left - heroRect.left;
+      const top  = cardRect.top  - heroRect.top;
+      const rot  = parseFloat(card.dataset.rot) || 0;
+
+      // Przenieś kartę do hero
+      hero.appendChild(card);
+      card.style.position  = 'absolute';
+      card.style.left      = left + 'px';
+      card.style.top       = top  + 'px';
+      card.style.transform = `rotate(${rot}deg)`;
+      card.style.margin    = '0';
     });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = baseTransforms[i];
-      card.style.zIndex = baseZIndexes[i];
-    });
+
+    // Stack kontener już nie potrzebny widocznie
+    stack.style.display = 'none';
+  }
+
+  function clamp(val, min, max) {
+    return Math.min(Math.max(val, min), max);
+  }
+
+  function onMouseDown(e) {
+    if (e.button !== 0) return;
+    const card = e.currentTarget;
+    dragging = card;
+
+    // Wysuń na wierzch
+    topZ++;
+    card.style.zIndex = topZ;
+    card.classList.add('dragging');
+
+    const rect = card.getBoundingClientRect();
+    startMouseX = e.clientX;
+    startMouseY = e.clientY;
+    startLeft   = parseFloat(card.style.left);
+    startTop    = parseFloat(card.style.top);
+
+    e.preventDefault();
+  }
+
+  function onMouseMove(e) {
+    if (!dragging) return;
+    const heroRect = hero.getBoundingClientRect();
+    const dx = e.clientX - startMouseX;
+    const dy = e.clientY - startMouseY;
+
+    const cardW = dragging.offsetWidth;
+    const cardH = dragging.offsetHeight;
+    const maxLeft = heroRect.width  - cardW * 0.3;   // może wyjść trochę za prawą
+    const maxTop  = heroRect.height - cardH * 0.3;
+
+    const newLeft = clamp(startLeft + dx, -cardW * 0.3, maxLeft);
+    const newTop  = clamp(startTop  + dy, -cardH * 0.3, maxTop);
+
+    dragging.style.left = newLeft + 'px';
+    dragging.style.top  = newTop  + 'px';
+  }
+
+  function onMouseUp() {
+    if (!dragging) return;
+    dragging.classList.remove('dragging');
+    dragging = null;
+  }
+
+  // Touch support
+  function onTouchStart(e) {
+    const touch = e.touches[0];
+    const card  = e.currentTarget;
+    dragging    = card;
+    topZ++;
+    card.style.zIndex = topZ;
+    card.classList.add('dragging');
+
+    startMouseX = touch.clientX;
+    startMouseY = touch.clientY;
+    startLeft   = parseFloat(card.style.left);
+    startTop    = parseFloat(card.style.top);
+    e.preventDefault();
+  }
+
+  function onTouchMove(e) {
+    if (!dragging) return;
+    const touch    = e.touches[0];
+    const heroRect = hero.getBoundingClientRect();
+    const dx = touch.clientX - startMouseX;
+    const dy = touch.clientY - startMouseY;
+
+    const cardW  = dragging.offsetWidth;
+    const cardH  = dragging.offsetHeight;
+    const maxLeft = heroRect.width  - cardW * 0.3;
+    const maxTop  = heroRect.height - cardH * 0.3;
+
+    dragging.style.left = clamp(startLeft + dx, -cardW * 0.3, maxLeft) + 'px';
+    dragging.style.top  = clamp(startTop  + dy, -cardH * 0.3, maxTop)  + 'px';
+    e.preventDefault();
+  }
+
+  function onTouchEnd() {
+    if (!dragging) return;
+    dragging.classList.remove('dragging');
+    dragging = null;
+  }
+
+  // Podepnij eventy do kart
+  cards.forEach(card => {
+    card.addEventListener('mousedown',  onMouseDown);
+    card.addEventListener('touchstart', onTouchStart, { passive: false });
+    card.addEventListener('touchmove',  onTouchMove,  { passive: false });
+    card.addEventListener('touchend',   onTouchEnd);
   });
+
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup',   onMouseUp);
+
+  // Uruchom po załadowaniu layoutu
+  window.addEventListener('load', init);
 })();
 
 </script>
