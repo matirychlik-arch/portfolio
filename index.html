@@ -1974,17 +1974,15 @@ document.addEventListener('keydown', function(e) {
   // kolejność kart: 8.png, 6.png, 3.jpeg, 5.png, 7.png, 2.jpeg, 4.png, 1.jpeg
   // [leftPercent, topPercent, rot]
   const startPositions = [
-    [0.80, 0.15,  -20],   // 8.png
+    [0.80, 0.15,  -45],   // 8.png  — obrót -45°
     [0.57, 0.18,    8],   // 6.png
     [0.74, 0.40,   15],   // 3.jpeg
-    [0.49, 0.34,   -5],   // 5.png
-    [0.70, 0.68,  -12],   // 7.png
-    [0.51, 0.65,   18],   // 2.jpeg
+    [0.38, 0.18,   -5],   // 5.png  — bardziej w lewo i górę
+    [0.70, 0.68,  -12],   // 9.png
+    [0.51, 0.65,   18],   // 10.png
     [0.38, 0.50,    6],   // 4.png
     [0.57, 0.46,    2],   // 1.jpeg
-    [0.76, 0.22,  -11],   // 9.png
-    [0.44, 0.24,   17],   // 10.png
-    [0.63, 0.58,   -6],   // 11.jpeg
+    [0.45, 0.72,   -6],   // 11.jpeg — bardziej w lewo i w dół
   ];
 
   function init() {
