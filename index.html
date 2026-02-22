@@ -986,7 +986,7 @@ footer {
     <a href="#work" data-i18n="nav-work">Prace</a>
     <a href="#about" data-i18n="nav-about">O mnie</a>
     <a href="#experience" data-i18n="nav-exp">Droga twórcza</a>
-    <button class="nav-cta" onclick="copyEmail()" style="background:none; color:inherit; cursor:pointer;">Contact</button>
+    <button class="nav-cta" onclick="document.querySelector('.cta-section').scrollIntoView({behavior:'smooth'})" style="background:none; color:inherit; cursor:pointer;">Contact</button>
     <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
       <span class="lang-current">PL</span>
       <span class="lang-sep">/</span>
@@ -2347,9 +2347,9 @@ function copyEmail() {
   const email = atob('bWF0aXJ5Y2hsaWsrcHJhY2FAZ21haWwuY29t');
   navigator.clipboard.writeText(email).then(() => {
     const el = document.getElementById('emailCopied');
-    const currentLangLabel = currentLang === 'en' ? 'Email copied!' : 'Skopiowano email!';
+    const currentLangLabel = currentLang === 'en' ? '✓ Email copied to clipboard' : '✓ Skopiowano adres email';
     if (el) {
-      el.textContent = currentLangLabel + ' · ' + email;
+      el.textContent = currentLangLabel;
       el.style.opacity = '1';
       clearTimeout(el._hideTimer);
       el._hideTimer = setTimeout(() => { el.style.opacity = '0'; }, 3000);
@@ -2363,7 +2363,7 @@ function copyEmail() {
     document.execCommand('copy');
     document.body.removeChild(ta);
     const el = document.getElementById('emailCopied');
-    const currentLangLabel = currentLang === 'en' ? 'Email copied!' : 'Skopiowano email!';
+    const currentLangLabel = currentLang === 'en' ? '✓ Email copied to clipboard' : '✓ Skopiowano adres email';
     if (el) {
       el.textContent = currentLangLabel;
       el.style.opacity = '1';
