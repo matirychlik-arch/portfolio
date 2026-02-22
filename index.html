@@ -1991,16 +1991,22 @@ function scrambleText(el, newText, duration) {
   const plainTarget = newText;
   const frames = Math.round(duration / 40);
   let frame = 0;
-  const origLen = el.textContent.length;
-  const targetLen = plainTarget.length;
+
+  // Lock element dimensions to prevent layout shift during scramble
+  const computedW = el.offsetWidth;
+  const computedH = el.offsetHeight;
+  el.style.width    = computedW + 'px';
+  el.style.height   = computedH + 'px';
+  el.style.overflow = 'hidden';
+  el.style.display  = el.style.display || 'inline-block';
 
   clearInterval(el._scrambleTimer);
   el._scrambleTimer = setInterval(() => {
     const progress = frame / frames;
     frame++;
     let result = '';
-    for (let i = 0; i < targetLen; i++) {
-      if (i < Math.floor(progress * targetLen)) {
+    for (let i = 0; i < plainTarget.length; i++) {
+      if (i < Math.floor(progress * plainTarget.length)) {
         result += plainTarget[i];
       } else {
         result += SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
@@ -2010,6 +2016,11 @@ function scrambleText(el, newText, duration) {
     if (frame > frames) {
       clearInterval(el._scrambleTimer);
       el.textContent = plainTarget;
+      // Unlock dimensions after animation completes
+      el.style.width    = '';
+      el.style.height   = '';
+      el.style.overflow = '';
+      el.style.display  = '';
     }
   }, 40);
 }
