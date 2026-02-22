@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mateusz Rychlik — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-card: #111111;
+    --text: #f0ede6;
+    --text-dim: #888880;
+    --text-muted: #555550;
+    --accent: #d4ff00;
+    --border: #222220;
+    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    width: 210mm;
+    margin: 0 auto;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 14mm 14mm 12mm 14mm;
+    position: relative;
+    page-break-after: always;
+  }
+
+  /* ── PRINT BUTTON (screen only) ── */
+  .print-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #111;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 999;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+  .print-bar button {
+    background: var(--accent);
+    color: #0a0a0a;
+    border: none;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .print-bar button:hover { background: #eeff44; }
+
+  @media screen {
+    body { padding-top: 48px; }
+  }
+
+  @media print {
+    .print-bar { display: none; }
+    body { padding-top: 0; }
+    html, body { width: 210mm; }
+    .page { page-break-after: always; }
+  }
+
+  /* ── HEADER ── */
+  .cv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 10mm;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8mm;
+  }
+
+  .cv-name {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .cv-role {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .cv-contacts {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .cv-contacts a {
+    color: var(--text-dim);
+    text-decoration: none;
+  }
+
+  .cv-label-tag {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.6;
+    margin-right: 6px;
+  }
+
+  .cv-photo {
+    width: 32mm;
+    height: 40mm;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  /* ── TWO-COLUMN LAYOUT ── */
+  .cv-body {
+    display: grid;
+    grid-template-columns: 58mm 1fr;
+    gap: 8mm;
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .cv-section-title {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 5mm;
+    padding-bottom: 2mm;
+    border-bottom: 1px solid rgba(212,255,0,0.2);
+  }
+
+  /* ── LEFT COLUMN ── */
+  .cv-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6mm;
+  }
+
+  /* Skills */
+  .skill-item {
+    margin-bottom: 3mm;
+  }
+
+  .skill-name {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 1mm;
+  }
+
+  .skill-desc {
+    font-size: 8.5px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* Education */
+  .edu-item {
+    margin-bottom: 3mm;
+  }
+
+  .edu-school {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 1px;
+  }
+
+  .edu-degree {
+    font-size: 9px;
+    color: var(--text-dim);
+    margin-bottom: 1px;
+  }
+
+  .edu-years {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── RIGHT COLUMN ── */
+  .cv-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6mm;
+  }
+
+  /* Experience */
+  .exp-item {
+    margin-bottom: 4mm;
+    padding-bottom: 4mm;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1mm;
+  }
+
+  .exp-role {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text);
+  }
+
+  .exp-years {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .exp-company {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2mm;
+  }
+
+  .exp-desc {
+    font-size: 9px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* ── PAGE 2 — COVER LETTER ── */
+  .letter-heading {
+    font-family: var(--font-display);
+    font-size: 34px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 2mm;
+    color: var(--text);
+  }
+
+  .letter-sub {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8mm;
+  }
+
+  .letter-divider {
+    width: 32px;
+    height: 1px;
+    background: rgba(212,255,0,0.35);
+    margin-bottom: 8mm;
+  }
+
+  .letter-body {
+    font-size: 10.5px;
+    line-height: 1.85;
+    color: rgba(240,237,230,0.78);
+    max-width: 148mm;
+  }
+
+  .letter-body p {
+    margin-bottom: 5mm;
+  }
+
+  .letter-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .letter-signature {
+    margin-top: 10mm;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── ACCENT DOT ── */
+  .accent-dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <span>Mateusz Rychlik — CV / PL</span>
+  <button onclick="window.print()">Zapisz jako PDF</button>
+</div>
+
+<!-- ═══════════════════════════════
+     STRONA 1 — CV
+     ═══════════════════════════════ -->
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="cv-header">
+    <div>
+      <div class="cv-name">Mateusz Rychlik</div>
+      <div class="cv-role">AI Film Creator &amp; Visual Designer</div>
+      <div class="cv-contacts">
+        <span><span class="cv-label-tag">email</span>matirychlik+praca@gmail.com</span>
+        <span><span class="cv-label-tag">miasto</span>Wrocław, Polska</span>
+        <span><span class="cv-label-tag">portfolio</span>matirychlik-arch.github.io/portfolio</span>
+      </div>
+    </div>
+    <img class="cv-photo" src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/SCREENY%20DO%20HOME/1.jpeg" alt="Mateusz Rychlik">
+  </div>
+
+  <!-- BODY -->
+  <div class="cv-body">
+
+    <!-- LEFT -->
+    <div class="cv-left-col">
+
+      <div>
+        <div class="cv-section-title">Umiejętności</div>
+
+        <div class="skill-item">
+          <div class="skill-name"><span class="accent-dot"></span>AI Video &amp; Image</div>
+          <div class="skill-desc">Kling, Sora, Higgsfield, Nano Banana, Flux, Midjourney, Seedream — reżyserowanie stylu, nastroju i narracji generatywnej</div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-name"><span class="accent-dot"></span>Montaż &amp; Motion</div>
+          <div class="skill-desc">Premiere Pro, After Effects, Motion — produkcja od materiału surowego do finalnego output</div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-name"><span class="accent-dot"></span>Visual Design</div>
+          <div class="skill-desc">Photoshop, Illustrator, Figma — identyfikacje wizualne, kampanie, materiały druku i digital</div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-name"><span class="accent-dot"></span>AI Workflow</div>
+          <div class="skill-desc">Claude, ChatGPT, Gemini — tworzenie systemów promptów, automatyzacja procesów kreatywnych</div>
+        </div>
+
+        <div class="skill-item">
+          <div class="skill-name"><span class="accent-dot"></span>Production</div>
+          <div class="skill-desc">Nagranie, oświetlenie, sound design — praca on-set i w post-produkcji</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="cv-section-title">Wykształcenie</div>
+
+        <div class="edu-item">
+          <div class="edu-school">Szkoła Filmowa</div>
+          <div class="edu-degree">Kursy Operatorskie, Historia Kina Polskiego i Światowego</div>
+          <div class="edu-years">Wrocław</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-school">Uniwersytet Wrocławski</div>
+          <div class="edu-degree">Communication Design / Projektowanie komunikacji</div>
+          <div class="edu-years">2013–2017</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-school">Uniwersytet Jagielloński</div>
+          <div class="edu-degree">Amerykanistyka</div>
+          <div class="edu-years">2011–2014 · Kraków</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="cv-right-col">
+
+      <div>
+        <div class="cv-section-title">Doświadczenie</div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">AI Film Content Creator</div>
+            <div class="exp-years">2023–obecnie</div>
+          </div>
+          <div class="exp-company">Freelance / Autorskie projekty</div>
+          <div class="exp-desc">Tworzenie obrazów i materiałów wideo przy pomocy narzędzi generatywnych AI. Reżyserowanie stylu, narracji i nastroju w projektach komercyjnych i autorskich.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Video Creator &amp; AI Art Director</div>
+            <div class="exp-years">2021–2025</div>
+          </div>
+          <div class="exp-company">The Knights of Unity</div>
+          <div class="exp-desc">Reżyseria i produkcja trailerów dla własnych gier studia oraz tytułów wydawniczych. Kierowanie grafikami 2D i 3D, koncepcja kreatywna, montaż, sound design. Tworzenie grafik i wideo z wykorzystaniem AI — od promptowania po finalny materiał. Współpraca przy identyfikacji wizualnej spółki.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Motion Designer &amp; Visual Creator</div>
+            <div class="exp-years">2019–2021</div>
+          </div>
+          <div class="exp-company">Surfer</div>
+          <div class="exp-desc">Projektowanie motion design, UI/UX i materiałów reklamowych dla data-driven SEO startupu w pierwszych latach jego rozwoju. Montaż i produkcja materiałów wideo.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Motion Graphic Designer</div>
+            <div class="exp-years">2018–obecnie</div>
+          </div>
+          <div class="exp-company">Vidsy — Warner Bros / HBO / Netflix / Ubisoft / Blizzard i inni</div>
+          <div class="exp-desc">Tworzenie mobilnych reklam wideo dla jednych z największych marek na świecie. Kampanie dla Harry Potter, Gra o Tron, Assassin's Creed, Warcraft, Maybelline, Philips, La Roche-Posay i wielu innych.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Video Creator &amp; Visual Designer</div>
+            <div class="exp-years">2014–2019</div>
+          </div>
+          <div class="exp-company">Stowarzyszenie Nowe Horyzonty</div>
+          <div class="exp-desc">Współtworzenie identyfikacji wizualnych MFF Nowe Horyzonty i American Film Festival. Produkcja materiałów graficznych i wideo, social media, projekty interaktywne (AR, bot repertuarowy).</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     STRONA 2 — LIST MOTYWACYJNY
+     ═══════════════════════════════ -->
+<div class="page">
+
+  <div class="letter-heading">List motywacyjny</div>
+  <div class="letter-sub">Mateusz Rychlik — AI Film Creator</div>
+  <div class="letter-divider"></div>
+
+  <div class="letter-body">
+    <p>Szanowni Państwo,</p>
+
+    <p>Zgłaszam się na stanowisko AI Artist / AI Film Content Creator. Obszar łączący obraz filmowy, narzędzia generatywne i narrację wizualną to naturalny kierunek mojego rozwoju — i dokładnie to, czym zajmuję się na co dzień.</p>
+
+    <p>Mam filmowo-fotograficzną wrażliwość obrazu. Studiowałem na Wydziale Operatorskim Szkoły Filmowej, pogłębiając świadome myślenie kolorem, światłem i kompozycją. Obejrzałem tysiące kadrów filmowych, szukając relacji między znaczeniem, estetyką i emocją — dziś tę samą wrażliwość przenoszę do pracy z obrazem generowanym przez AI.</p>
+
+    <p>Na co dzień pracuję z narzędziami generatywnymi do tworzenia obrazu i wideo. Tworzę i montuję materiały wideo, przygotowuję zestawy wizualne do kampanii, social mediów i prezentacji — łącząc podejście projektowe z myśleniem filmowym.</p>
+
+    <p>Przez lata realizowałem materiały wideo m.in. dla Stowarzyszenia Nowe Horyzonty, festiwalu Nowe Horyzonty, American Film Festival oraz kina Nowe Horyzonty, współtworząc ich wizualny język i estetyczne DNA.</p>
+
+    <p>Równolegle pracowałem przy projektach reklamowych i komunikacji wizualnej dla globalnych marek: Warner Bros, HBO, Netflix, Ubisoft, Blizzard, Nokia, Duolingo, HP, Philips, VARTA, Maybelline New York i La Roche-Posay — współtworząc materiały związane m.in. z tytułami Harry Potter, Gra o Tron i Assassin's Creed.</p>
+
+    <p>Doświadczenie zdobywałem na styku kultury, technologii i branży gamingowej. Nauczyło mnie to pracy w szybko zmieniającym się środowisku i świadomego dobierania narzędzi do zamierzonego efektu. Rozumiem AI nie jako skrót, ale jako proces reżyserowania obrazu, stylu i narracji.</p>
+
+    <p>W załączeniu przesyłam portfolio oraz przykłady prac wideo. Chętnie opowiem o swoim procesie twórczym podczas rozmowy.</p>
+
+    <div class="letter-signature">
+      Z wyrazami szacunku,<br>
+      Mateusz Rychlik
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
