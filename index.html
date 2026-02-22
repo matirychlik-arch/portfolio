@@ -986,7 +986,7 @@ footer {
     <a href="#work" data-i18n="nav-work">Prace</a>
     <a href="#about" data-i18n="nav-about">O mnie</a>
     <a href="#experience" data-i18n="nav-exp">Droga twórcza</a>
-    <a href="/cdn-cgi/l/email-protection#7b161a0f12090218131712103b1c161a121755181416" class="nav-cta">Contact</a>
+    <button class="nav-cta" onclick="copyEmail()" style="background:none; color:inherit; cursor:pointer;">Contact</button>
     <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
       <span class="lang-current">PL</span>
       <span class="lang-sep">/</span>
@@ -1765,9 +1765,9 @@ document.addEventListener('DOMContentLoaded', () => {
   <h2 class="cta-title reveal" data-i18n="cta-title">Stwórzmy coś <em>razem</em></h2>
   <p class="cta-sub reveal" data-i18n="cta-sub">Szukasz kogoś, kto łączy oko filmowe z narzędziami AI?</p>
   <div class="cta-buttons reveal">
-    <a href="/cdn-cgi/l/email-protection#88e5e9fce1faf1ebe0e4e1e3c8efe5e9e1e4a6ebe7e5" class="btn btn-primary" data-i18n="cta-btn">Napisz do mnie</a>
-    <a href="tel:+48796321636" class="btn">+48 796 321 636</a>
+    <button class="btn btn-primary" onclick="copyEmail()" data-i18n="cta-btn">Napisz do mnie</button>
   </div>
+  <div id="emailCopied" style="margin-top:16px; font-family:var(--font-mono); font-size:11px; letter-spacing:2px; color:var(--accent); opacity:0; transition:opacity 0.3s; text-transform:uppercase;"></div>
 </section>
 
 <!-- ==========================================
@@ -1777,7 +1777,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <span class="footer-name">Mateusz Rychlik</span>
   <span class="footer-copy">©2025 — AI Film Creator</span>
   <div class="footer-links">
-    <a href="/cdn-cgi/l/email-protection#caa7abbea3b8b3a9a2a6a3a18aada7aba3a6e4a9a5a7">Email</a>
+    <a href="#" onclick="copyEmail(); return false;">Email</a>
     <a href="#">YouTube</a>
     <a href="#">Instagram</a>
   </div>
@@ -2343,6 +2343,36 @@ function toggleLang() {
 </div>
 
 <script>
+function copyEmail() {
+  const email = atob('bWF0aXJ5Y2hsaWsrcHJhY2FAZ21haWwuY29t');
+  navigator.clipboard.writeText(email).then(() => {
+    const el = document.getElementById('emailCopied');
+    const currentLangLabel = currentLang === 'en' ? 'Email copied!' : 'Skopiowano email!';
+    if (el) {
+      el.textContent = currentLangLabel + ' · ' + email;
+      el.style.opacity = '1';
+      clearTimeout(el._hideTimer);
+      el._hideTimer = setTimeout(() => { el.style.opacity = '0'; }, 3000);
+    }
+  }).catch(() => {
+    // Fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = atob('bWF0aXJ5Y2hsaWsrcHJhY2FAZ21haWwuY29t');
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const el = document.getElementById('emailCopied');
+    const currentLangLabel = currentLang === 'en' ? 'Email copied!' : 'Skopiowano email!';
+    if (el) {
+      el.textContent = currentLangLabel;
+      el.style.opacity = '1';
+      clearTimeout(el._hideTimer);
+      el._hideTimer = setTimeout(() => { el.style.opacity = '0'; }, 3000);
+    }
+  });
+}
+
 function openCV() {
   document.getElementById('cvOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
