@@ -1955,11 +1955,28 @@ window.addEventListener('scroll', () => {
   line-height: 1.6;
 }
 @media (max-width: 680px) {
-  .cv-inner { grid-template-columns: 1fr; max-height: none; }
-  .cv-left { flex-direction: row; }
-  .cv-photo { width: 110px; flex-shrink: 0; }
-  #cvOverlay { align-items: flex-start; overflow-y: auto; }
+  #cvOverlay { align-items: flex-start; overflow-y: auto; padding: 60px 16px 40px; }
   #cvBlob { width: 88px; height: 88px; bottom: 24px; right: 24px; }
+
+  /* cv-inner jako flex column — dzieci ustawiamy przez order */
+  .cv-inner {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* cv-left zawiera: zdjęcie (order1), skills (order3), btn (order4) */
+  .cv-left {
+    order: 1;
+    display: contents; /* dzieci cv-left stają się bezpośrednimi dziećmi cv-inner */
+  }
+
+  /* Kolejność: zdjęcie → list → umiejętności → PDF */
+  .cv-photo        { order: 1; width: 100%; aspect-ratio: 16/9; }
+  .cv-right        { order: 2; }
+  .cv-skills       { order: 3; }
+  .cv-download-btn { order: 4; }
 }
 </style>
 
