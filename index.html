@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mateusz Rychlik — AI Film Creator</title>
+<title>Mateusz Rychlik — AI Video & Motion Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -1060,12 +1060,18 @@ footer {
   </div>
 
   <h1 class="hero-title">
-    <span class="line hero-line-1"><span>AI Film</span></span>
-    <span class="line hero-line-2"><span>Content</span></span>
-    <span class="line hero-line-3"><span>Creator</span></span>
+    <span class="line hero-line-1"><span>AI Video</span></span>
+    <span class="line hero-line-2"><span>&amp; Motion</span></span>
+    <span class="line hero-line-3"><span>Designer</span></span>
   </h1>
   <div class="hero-bottom">
-    <p class="hero-tagline" data-i18n="hero-tagline">Obraz filmowy, narzędzia generatywne i narracja wizualna — łączę je w jedno, tworząc obrazy na styku kina, designu i sztucznej inteligencji.</p>
+    <div style="display:flex; flex-direction:column; gap:20px; max-width:420px;">
+      <p class="hero-tagline" data-i18n="hero-tagline">Tworzę materiały wideo i motion graphics przy użyciu AI — od koncepcji po gotowy plik do publikacji. Zrealizowane projekty dla Warner Bros, HBO, Netflix i Blizzard. Wykształcenie filmowe (Wydział Operatorski).</p>
+      <div style="display:flex; gap:12px; align-items:center;">
+        <button class="btn btn-primary" onclick="copyEmail()" style="font-size:12px; padding:10px 24px;" data-i18n="cta-btn">Napisz do mnie</button>
+        <a href="#work" style="font-family:var(--font-mono); font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); opacity:0.7; transition:opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">↓ Zobacz prace</a>
+      </div>
+    </div>
     <span class="hero-scroll" data-i18n="hero-scroll">Scroll</span>
   </div>
 </section>
@@ -1193,8 +1199,8 @@ footer {
             <span class="project-tag">Motion</span>
             <span class="project-tag">Agency</span>
           </div>
-          <h3 class="project-name" data-i18n="name-agencies">Prace dla agencji</h3>
-          <p class="project-desc" data-i18n="desc-agencies">Materiały wideo i motion design tworzone dla agencji Good Taste — kreacje dla muzyków i wydarzeń koncertowych.</p>
+          <h3 class="project-name" data-i18n="name-agencies">Good Taste Agency</h3>
+          <p class="project-desc" data-i18n="desc-agencies">Materiały wideo i motion design dla agencji muzycznej Good Taste — kreacje dla muzyków i wydarzeń koncertowych. Montaż, motion design, przygotowanie do publikacji.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
       </div>
@@ -1831,7 +1837,7 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================== -->
 <footer>
   <span class="footer-name">Mateusz Rychlik</span>
-  <span class="footer-copy">©2025 — AI Film Creator</span>
+  <span class="footer-copy">©2025 — AI Video & Motion Designer</span>
   <div class="footer-links">
     <a href="#" onclick="copyEmail(); return false;">Email</a>
     <a href="#">YouTube</a>
@@ -1899,7 +1905,7 @@ const TRANSLATIONS = {
     'nav-location': 'Wrocław, PL / ',
 
     // HERO
-    'hero-tagline': 'Obraz filmowy, narzędzia generatywne i narracja wizualna — łączę je w jedno, tworząc obrazy na styku kina, designu i sztucznej inteligencji.',
+    'hero-tagline': 'Tworzę materiały wideo i motion graphics przy użyciu AI — od koncepcji po gotowy plik do publikacji. Zrealizowane projekty dla Warner Bros, HBO, Netflix i Blizzard. Wykształcenie filmowe (Wydział Operatorski).',
     'hero-scroll':  'Scroll',
 
     // BRANDS
@@ -1919,8 +1925,8 @@ const TRANSLATIONS = {
     'desc-ai':       'Autorskie eksperymenty z obrazem generatywnym — reżyserowanie stylu, nastroju i narracji wizualnej przy pomocy narzędzi AI.',
     'name-showreel': 'AI Film Showreel 2025',
     'desc-showreel': 'Kompilacja prac łączących narzędzia generatywne z filmowym podejściem do kadru, światła i narracji. Od konceptu do finalnego obrazu.',
-    'name-agencies': 'Prace dla agencji',
-    'desc-agencies': 'Materiały wideo i motion design tworzone dla agencji Good Taste — kreacje dla muzyków i wydarzeń koncertowych.',
+    'name-agencies': 'Good Taste Agency',
+    'desc-agencies': 'Materiały wideo i motion design dla agencji muzycznej Good Taste — kreacje dla muzyków i wydarzeń koncertowych. Montaż, motion design, przygotowanie do publikacji.',
 
     // ABOUT
     'about-label':  '[ 02 — About ]',
@@ -1970,7 +1976,7 @@ const TRANSLATIONS = {
 
     // CTA
     'cta-title': 'Stwórzmy coś <em>razem</em>',
-    'cta-sub':   'Szukasz kogoś, kto łączy oko filmowe z narzędziami AI?',
+    'cta-sub':   'Szukasz kogoś, kto dowiezie materiały wideo i motion od koncepcji do publikacji — używając AI?',
     'cta-btn':   'Napisz do mnie',
   },
 
@@ -1982,7 +1988,7 @@ const TRANSLATIONS = {
     'nav-location': 'Wrocław, PL / ',
 
     // HERO
-    'hero-tagline': 'Cinematic vision, generative tools and visual storytelling — I combine them into one, creating images at the intersection of cinema, design and artificial intelligence.',
+    'hero-tagline': 'I create video and motion graphics using AI tools — from concept to final file ready for publication. Delivered projects for Warner Bros, HBO, Netflix and Blizzard. Film school background (Cinematography Department).',
     'hero-scroll':  'Scroll',
 
     // BRANDS
@@ -2002,8 +2008,8 @@ const TRANSLATIONS = {
     'desc-ai':       'Original experiments with generative imagery — directing style, mood and visual narrative using AI tools.',
     'name-showreel': 'AI Film Showreel 2025',
     'desc-showreel': 'A compilation of works combining generative tools with a cinematic approach to framing, light and narrative. From concept to final image.',
-    'name-agencies': 'Agency Jobs',
-    'desc-agencies': 'Video and motion design work created for Good Taste agency — visuals for musician performances and concert events.',
+    'name-agencies': 'Good Taste Agency',
+    'desc-agencies': 'Video and motion design for Good Taste music agency — visuals for musician performances and concert events. Editing, motion design, delivery.',
 
     // ABOUT
     'about-label':  '[ 02 — About ]',
@@ -2053,7 +2059,7 @@ const TRANSLATIONS = {
 
     // CTA
     'cta-title': 'Let’s create something <em>together</em>',
-    'cta-sub':   'Looking for someone who combines a cinematic eye with AI tools?',
+    'cta-sub':   'Looking for someone who delivers video and motion from concept to publication — using AI?',
     'cta-btn':   'Get in touch',
   }
 };
