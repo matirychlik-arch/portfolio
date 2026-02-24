@@ -1068,7 +1068,7 @@ footer {
     <div style="display:flex; flex-direction:column; gap:20px; max-width:420px;">
       <p class="hero-tagline" data-i18n="hero-tagline">Tworzę materiały wideo i motion graphics przy użyciu AI — od koncepcji po gotowy plik do publikacji. Zrealizowane projekty dla Warner Bros, HBO, Netflix i Blizzard. Wykształcenie filmowe (Wydział Operatorski).</p>
       <div style="display:flex; gap:12px; align-items:center;">
-        <button class="btn btn-primary" onclick="copyEmail()" style="font-size:12px; padding:10px 24px;" data-i18n="cta-btn">Napisz do mnie</button>
+        <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="font-size:12px; padding:10px 24px;" data-i18n="cta-btn">Napisz do mnie</button>
         <a href="#work" style="font-family:var(--font-mono); font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); opacity:0.7; transition:opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">↓ Zobacz prace</a>
       </div>
     </div>
@@ -1823,7 +1823,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- ==========================================
      CTA
      ========================================== -->
-<section class="cta-section">
+<section class="cta-section" id="contact">
   <h2 class="cta-title reveal" data-i18n="cta-title">Stwórzmy coś <em>razem</em></h2>
   <p class="cta-sub reveal" data-i18n="cta-sub">Szukasz kogoś, kto łączy oko filmowe z narzędziami AI?</p>
   <div class="cta-buttons reveal">
