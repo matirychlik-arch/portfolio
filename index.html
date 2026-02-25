@@ -1078,7 +1078,7 @@ footer {
       <p class="hero-tagline" data-i18n="hero-tagline">Tworzę materiały wideo i motion graphics przy użyciu AI — od koncepcji po gotowy plik do publikacji. Zrealizowane projekty dla Warner Bros, HBO, Netflix i Blizzard. Wykształcenie filmowe (Wydział Operatorski).</p>
       <div style="display:flex; gap:12px; align-items:center;">
         <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="font-size:12px; padding:10px 24px;" data-i18n="cta-btn">Napisz do mnie</button>
-        <a href="#work" style="font-family:var(--font-mono); font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); opacity:0.7; transition:opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">↓ Zobacz prace</a>
+        <a href="#work" style="font-family:var(--font-mono); font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); opacity:0.7; transition:opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" data-i18n="hero-see-works">↓ Zobacz prace</a>
       </div>
     </div>
     <span class="hero-scroll" data-i18n="hero-scroll">Scroll</span>
@@ -1157,7 +1157,7 @@ footer {
             <span class="project-tag">Motion</span>
           </div>
           <h3 class="project-name">The Knights of U & Cyrulicy</h3>
-          <p class="project-tools-line">Premiere Pro · After Effects · AI</p>
+          <p class="project-tools-line">Premiere Pro · After Effects · AI · Illustrator · Photoshop</p>
           <p class="project-desc" data-i18n="desc-knights">Produkcja wideo — trailery dla studia gamingowego i materiały dla brandu kosmetycznego.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1174,7 +1174,7 @@ footer {
             <span class="project-tag">Video</span>
           </div>
           <h3 class="project-name" data-i18n="name-festivale">Nowe Horyzonty & American Film Festival</h3>
-          <p class="project-tools-line">Premiere Pro · Motion · Figma</p>
+          <p class="project-tools-line">Premiere Pro · After Effects · Figma · Illustrator · Photoshop</p>
           <p class="project-desc" data-i18n="desc-festivale">Lata współtworzenia wizualnego języka jednych z najważniejszych festiwali filmowych w Polsce.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1195,7 +1195,7 @@ footer {
             <span class="project-tag">Direction</span>
           </div>
           <h3 class="project-name" data-i18n="name-ai">AI Visual Experiments</h3>
-          <p class="project-tools-line">Midjourney · Flux · Nano Banana</p>
+          <p class="project-tools-line">Nano Banana Pro · Higgsfield · Flux · C-Dream · Topaz · Bestmintony</p>
           <p class="project-desc" data-i18n="desc-ai">Autorskie eksperymenty z obrazem generatywnym — reżyserowanie stylu, nastroju i narracji wizualnej przy pomocy narzędzi AI.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1213,7 +1213,7 @@ footer {
             <span class="project-tag">Agency</span>
           </div>
           <h3 class="project-name" data-i18n="name-agencies">Good Taste Agency</h3>
-          <p class="project-tools-line">Premiere Pro · After Effects</p>
+          <p class="project-tools-line">Premiere Pro · After Effects · Illustrator · Figma · Photoshop</p>
           <p class="project-desc" data-i18n="desc-agencies">Materiały wideo i motion design dla agencji muzycznej Good Taste — kreacje dla muzyków i wydarzeń koncertowych. Montaż, motion design, przygotowanie do publikacji.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1233,7 +1233,7 @@ footer {
           <span class="project-tag">Film</span>
         </div>
         <h3 class="project-name" data-i18n="name-showreel">AI Film Showreel 2025</h3>
-        <p class="project-tools-line">Kling · Higgsfield · Premiere Pro</p>
+        <p class="project-tools-line">Kling · Higgsfield · Premiere Pro · Nano Banana Pro</p>
         <p class="project-desc" data-i18n="desc-showreel">Kompilacja prac łączących narzędzia generatywne z filmowym podejściem do kadru, światła i narracji. Od konceptu do finalnego obrazu.</p>
       </div>
       <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1273,6 +1273,83 @@ footer {
 <script>
 const BASE = 'https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/';
 
+const CAPTIONS_EN = {
+  'Kierowanie całością produkcji — od koncepcji kreatywnej przez reżyserię, po montaż i sound design. Koordynacja zespołu grafików, integracja assetów z silnika gry, nadzór nad spójnością wizualną i finalną obróbką.':
+    'Full production management — from creative concept through directing, to editing and sound design. Team coordination, asset integration from game engine, visual consistency oversight and final post-production.',
+
+  'Opracowanie koncepcji wideo i kierowanie procesem produkcyjnym. Nadzór nad grafikami 3D, koordynacja ich pracy z wizją projektu. Montaż, sound design, korekcja barwna, przygotowanie do dystrybucji.':
+    'Video concept development and production process management. Oversight of 3D artists, coordinating their work with the project vision. Editing, sound design, colour correction, distribution preparation.',
+
+  'Pełne prowadzenie kreacji — reżyseria, koncepcja wizualna, montaż, sound design. Nadzór nad zespołem grafików i spójnością materiału z identyfikacją produktu.':
+    'Full creative lead — directing, visual concept, editing, sound design. Team oversight and material consistency with product identity.',
+
+  'Strategiczna współpraca z zespołem deweloperów — przygotowanie buildów pod produkcję wideo. Koncepcja kreatywna, reżyseria nagrań, efekty motion, montaż, sound design, napisy, nadzór nad całością procesu do momentu wydania.':
+    'Strategic collaboration with the developer team — preparing builds for video production. Creative concept, session directing, motion effects, editing, sound design, subtitles, full process oversight through to release.',
+
+  'Koncepcja i reżyseria materiału łączącego nagrania live-action z motion design w stylistyce graficznej gry. Bezpośrednia współpraca z zespołem developerskim przy budowaniu features pod potrzeby produkcji wideo. Nagranie, montaż, animacja, sound design.':
+    'Concept and directing of a piece combining live-action footage with motion design in the game's visual style. Direct collaboration with the development team on building features for video production. Recording, editing, animation, sound design.',
+
+  'Stworzenie koncepcji kreatywnej, na bazie której zespół grafików wyprodukował materiały wizualne. Animacja, sound design, montaż, przygotowanie do wydania.':
+    'Created the creative concept on which the art team based their visual production. Animation, sound design, editing, release preparation.',
+
+  'Koncepcja kreatywna i realizacja materiału łączącego nagrania live-action z efektami AI — w tym wirtualny product placement (buteleczka na punkcie Hebe w centrum handlowym). Nagranie, montaż, postprodukcja, wydanie.':
+    'Creative concept and execution of a piece combining live-action footage with AI effects — including virtual product placement (product at a Hebe store). Recording, editing, post-production, delivery.',
+
+  'Postprodukcja i finalizacja materiałów na bazie assetów producenta. Montaż, sound design, korekta animacji, integracja elementów AI. Nadzór nad jakością i spójnością końcowego produktu.':
+    'Post-production and finalization of materials based on producer assets. Editing, sound design, animation correction, AI element integration. Quality and consistency oversight of the final product.',
+
+  'Prowadzenie kreacji od briefu do gotowego materiału. Opracowywanie scenariuszy i koncepcji wizualnych we współpracy z project managerem. Praca z materiałami o skrajnie różnej skali — od pojedynczego packshotu kosmetycznego po biblioteki 20–30 GB assetów z gier AAA. Dla każdego materiału: analiza dostępnych zasobów, budowanie koncepcji narracyjnej i wizualnej, dobór i obróbka assetów, montaż, animacja, motion design, sound design, przygotowanie do publikacji. Pełna odpowiedzialność za kreację i egzekucję — od pustego timeline\':
+    'End-to-end creative production from brief to finished material. Developing scripts and visual concepts in collaboration with the project manager. Working with materials at vastly different scales — from single cosmetic packshots to 20–30 GB AAA game asset libraries. For each piece: asset analysis, narrative and visual concept development, asset selection and processing, editing, animation, motion design, sound design, publication prep. Full responsibility for creative and execution — from an empty timeline to a finished ad.',
+
+  'Współtworzenie koncepcji wizualnej całych edycji festiwalu. Prowadzenie procesu od idei przez doki artów, koordynacja pracy grafików, współpraca z agencją Homework (Warszawa) przy składzie finalnych projektów.':
+    'Co-creating the visual concept for entire festival editions. Leading the process from idea through art direction, coordinating graphic designers, collaborating with Homework agency (Warsaw) on the final design layouts.',
+
+  'Jak wyżej, plus bezpośrednia praca on-set z artystą odpowiedzialnym za koncepcję — prowadzenie procesu na planie, nadzór nad fotografią, całonocna sesja zdjęciowa.':
+    'As above, plus direct on-set work with the artist responsible for the concept — running the process on location, overseeing photography, overnight photo session.',
+
+  'Tworzenie i prowadzenie kreacji graficznych dla kina Nowe Horyzonty we Wrocławiu. Projektowanie w ramach istniejących brandbooków lub budowanie koncepcji wizualnych od zera — z zachowaniem spójności z marką Nowych Horyzontów. Różnorodność formatów: od plakatów przez materiały eventowe po kreacje digitalowe.':
+    'Creating and leading graphic creations for Nowe Horyzonty Cinema in Wrocław. Designing within existing brand books or building visual concepts from scratch — maintaining consistency with the Nowe Horyzonty brand. Wide variety of formats: from posters to event materials to digital creatives.',
+
+  'Koncepcja i realizacja kreacji na social media — przeglądy, festiwale, wydarzenia kina Nowe Horyzonty. Budowanie wizualnego języka komunikacji, który działa w feedzie i jednocześnie trzyma poziom marki.':
+    'Concept and execution of social media creatives — reviews, festivals, Nowe Horyzonty Cinema events. Building a visual communication language that works in the feed while maintaining brand standards.',
+
+  'Zaprojektowanie i wdrożenie kinowego bota repertuarowego na Messengerze — automatyzacja dostępu do repertuaru i informacji festiwalowych bez angażowania obsługi kina. (Projekt wycofany.)':
+    'Design and implementation of a cinema repertoire chatbot on Messenger — automating access to schedule and festival info without involving cinema staff. (Project discontinued.)',
+
+  'Budowanie autorskiego IP od podstaw: koncepcja serii komiksowej o polskim Spider-Manie osadzonym w uniwersum MCU. Pełen worldbuilding — Aleks jedzie do Nowego Jorku, razem z Peterem Parkerem zostaje ukąszony, pod okiem Starka staje się Spider-Manem. Z szacunku do przyjaciela i uczucia do MJ wraca do Polski, żyje incognito na Powiślu w stałym kontakcie z Avengersami. Gdy Warszawa staje w ogniu — musi działać sam, bez wsparcia. Eksploracja tego, jak AI może służyć do prototypowania narracji komiksowej na poziomie konceptu wizualnego.':
+    'Building an original IP from scratch: concept for a comic series about a Polish Spider-Man set in the MCU. Full worldbuilding — Aleks travels to New York, gets bitten alongside Peter Parker, becomes Spider-Man under Stark's mentorship. Out of respect for a friend and feelings for MJ, he returns to Poland, lives incognito in Warsaw in constant contact with the Avengers. When the city goes up in flames — he must act alone. Exploring how AI can serve to prototype comic narrative at a visual concept level.',
+
+  'Koncepcja crossoverowego IP: Predator vs. Cyberpunk 2077. Predatorzy wchodzą do Night City, polują na najsilniejszych najemników — V zostaje złapana. Badanie potencjału fanowskich crossoverów jako narzędzia budowania zaangażowania w istniejące marki.':
+    'Crossover IP concept: Predator vs. Cyberpunk 2077. Predators enter Night City, hunting the most powerful mercenaries — V gets captured. Exploring the potential of fan crossovers as engagement-building tools for existing brands.',
+
+  'Laboratorium stylistyczne — testowanie granic i możliwości generacji AI w kontekście różnych kierunków graficznych.':
+    'Style laboratory — testing the boundaries and possibilities of AI generation across different visual directions.',
+
+  'Fanowski crossover Predator vs. Wiedźmin — okładka komiksu. Eksploracja napięcia między dwoma rozpoznawalnymi IP w jednym kadrze.':
+    'Fan crossover Predator vs. The Witcher — comic book cover. Exploring the visual tension between two iconic IPs in a single frame.',
+
+  'Systematyczna eksploracja stylów graficznych i technik generacji AI. Budowanie biblioteki referencji i zrozumienia, jak różne podejścia promptowe przekładają się na estetykę końcowego obrazu.':
+    'Systematic exploration of visual styles and AI generation techniques. Building a reference library and understanding of how different prompting approaches translate into final image aesthetics.',
+
+  'Koncept komercyjny łączący dwa światy: perfumy Cyrulicy o zapachu coli × Nuka-Cola z Fallouta. Eksperyment na styku pop-kultury, product placementu i AI — realizowany przy okazji premiery serialu Fallout. Badanie, jak fandomowe konteksty mogą napędzać narrację produktową.':
+    'Commercial concept merging two worlds: Cyrulicy cola-scented perfume × Nuka-Cola from Fallout. An experiment at the intersection of pop culture, product placement and AI — produced around the Fallout series premiere. Exploring how fandom contexts can drive product narrative.',
+
+  'Stopklatka z kampanii AI video dla Cyrulicy (SOPPO) — materiał, który organicznie osiągnął ~40 tys. wyświetleń. Case study na to, jak AI-generated content przekłada się na realne wyniki wiralowe. Projekt realizowany a propos współpracy marki z Hebe — przełożenie digitalowej kreacji na działania w świecie fizycznym.':
+    'Still frame from an AI video campaign for Cyrulicy (SOPPO) — a piece that organically reached ~40k views. A case study in how AI-generated content translates into real viral results. Produced around the brand's collaboration with Hebe — bridging digital creative with physical-world activation.',
+
+  'Eksperymenty na styku AI i fotografii — testowanie, gdzie kończy się generacja, a zaczyna fotorealizm. Poszukiwanie punktu, w którym AI przestaje być widoczne.':
+    'Experiments at the intersection of AI and photography — testing where generation ends and photorealism begins. Searching for the point where AI becomes invisible.',
+
+  'Zastosowanie AI (Nano Banana) w branży nieruchomości — wirtualna aranżacja i dekoracja przestrzeni. Eksploracja komercyjnego potencjału AI w real estate marketingu.':
+    'Applying AI (Nano Banana) in real estate — virtual staging and interior decoration. Exploring the commercial potential of AI in real estate marketing.',
+
+  'Projekt wirtualnej influencerki — budowanie kompletnej persony wizualnej i narracyjnej. Seria fotorealistycznych obrazów opowiadających jej historię w estetyce casualowych zdjęć z iPhone\':
+    'Virtual influencer project — building a complete visual and narrative persona. A series of photorealistic images telling her story in the aesthetic of casual iPhone photography.',
+
+  'Rozwinięcie konceptu wirtualnej influencerki w kierunku luksusowej komercjalizacji — kreacja w stylu high-endowej kampanii Yves Saint Laurent. Testowanie, czy AI-generowana persona jest w stanie udźwignąć estetykę i wiarygodność premium fashion.':
+    'Developing the virtual influencer concept toward luxury commercialisation — crafted in the style of a high-end Yves Saint Laurent campaign. Testing whether an AI-generated persona can carry the aesthetics and credibility of premium fashion.',
+};
+
 const PROJECTS = {
   showreel: {
     title: 'AI Film Showreel 2025',
@@ -1286,6 +1363,7 @@ const PROJECTS = {
     title: 'The Knights of U & Cyrulicy',
     type: 'video',
     desc: '<span style="font-family:var(--font-display);font-size:clamp(20px,3vw,32px);color:#fff;font-style:italic;display:block;margin-bottom:8px;">The Knights of Unity</span>Tworzenie grafik z wykorzystaniem AI oraz promptów do generowania grafik i wideo. Tworzenie trailerów i spotów reklamowych dla gier własnych oraz wydawanych przez spółkę — zarówno własnoręcznie jak i kierując zespołami grafików 2D i 3D. Reżyseria, scenariusz, całościowe koncepcje i realizacja. Opracowywanie elementów identyfikacji wizualnej spółki. Praca konceptualna nad projektami wydawniczymi (gry wideo). Monitorowanie trendów marketingowych i wdrażanie ich w codzienne działania.',
+    descEn: '<span style="font-family:var(--font-display);font-size:clamp(20px,3vw,32px);color:#fff;font-style:italic;display:block;margin-bottom:8px;">The Knights of Unity</span>Creating graphics using AI and generative prompts. Producing trailers and advertising spots for the company's own games and published titles — both hands-on and by directing 2D and 3D art teams. Directing, scripting, full creative concept and execution. Developing elements of the company's visual identity. Conceptual work on publishing projects (video games). Monitoring marketing trends and implementing them into daily operations.',
     items: [
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Death Roads trailer 2.mp4', caption: 'Kierowanie całością produkcji — od koncepcji kreatywnej przez reżyserię, po montaż i sound design. Koordynacja zespołu grafików, integracja assetów z silnika gry, nadzór nad spójnością wizualną i finalną obróbką.' },
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Death Roads trailer 3.mp4', caption: 'Opracowanie koncepcji wideo i kierowanie procesem produkcyjnym. Nadzór nad grafikami 3D, koordynacja ich pracy z wizją projektu. Montaż, sound design, korekcja barwna, przygotowanie do dystrybucji.' },
@@ -1311,7 +1389,7 @@ const PROJECTS = {
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Ad play now.png', caption: '' },
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/A Holiday Story_ Once upon a time, there was Card Hunter_ Adventures.png', caption: '' },
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/IMG_20211009_170201.jpg', caption: '' },
-      {divider: 'Cyrulicy', desc: 'Polski brand kosmetyków i perfum — współpraca przy tworzeniu grafik, wideo UGC, opakowań produktów oraz współtworzenie brandu.'},
+      {divider: 'Cyrulicy', desc: 'Polski brand kosmetyków i perfum — współpraca przy tworzeniu grafik, wideo UGC, opakowań produktów oraz współtworzenie brandu.', descEn: 'Polish cosmetics and perfume brand — collaboration on graphics, UGC video, AI-generated visuals and campaigns for social media.'},
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Soppo AI reels.mp4', caption: 'Koncepcja kreatywna i realizacja materiału łączącego nagrania live-action z efektami AI — w tym wirtualny product placement (buteleczka na punkcie Hebe w centrum handlowym). Nagranie, montaż, postprodukcja, wydanie.' },
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Cyrulicy Cherry Bomb.mp4', caption: 'Postprodukcja i finalizacja materiałów na bazie assetów producenta. Montaż, sound design, korekta animacji, integracja elementów AI. Nadzór nad jakością i spójnością końcowego produktu.' },
       { src: 'VIDEOS THE KNIGHTS OF U & CYRULICY/Cyrulicy French.mp4', caption: 'Postprodukcja i finalizacja materiałów na bazie assetów producenta. Montaż, sound design, korekta animacji, integracja elementów AI. Nadzór nad jakością i spójnością końcowego produktu.' },
@@ -1323,6 +1401,7 @@ const PROJECTS = {
     title: 'Kampanie Vidsy',
     type: 'video',
     desc: 'Tworzenie mobilnych reklam wideo (opracowywanie koncepcji oraz wykonanie) dla jednych z najbardziej rozpoznawalnych marek na świecie, m.in.: Warner Bros Games, Marvel & FoxNext, Activision-Blizzard, Netflix, Ubisoft, HP, Frank\'s, Maybelline, Âme Pure, Philips, La Roche-Posay — w londyńskim startupie Vidsy.',
+    descEn: 'Creating mobile video ads (concept development and execution) for some of the world\'s biggest brands. 30+ campaigns, working with IP-rich material: game trailers, film scenes, brand assets. Full creative responsibility — from brief through scripting and visual concept to editing, motion design, sound and colour grade.',
     items: [
       { src: 'VIDSY/Warcraft Rumble 1.mp4', caption: 'Prowadzenie kreacji od briefu do gotowego materiału. Opracowywanie scenariuszy i koncepcji wizualnych we współpracy z project managerem. Praca z materiałami o skrajnie różnej skali — od pojedynczego packshotu kosmetycznego po biblioteki 20–30 GB assetów z gier AAA. Dla każdego materiału: analiza dostępnych zasobów, budowanie koncepcji narracyjnej i wizualnej, dobór i obróbka assetów, montaż, animacja, motion design, sound design, przygotowanie do publikacji. Pełna odpowiedzialność za kreację i egzekucję — od pustego timeline\'a do gotowego wideo.' },
       { src: 'VIDSY/Warcraft Rumble 2.mp4', caption: 'Prowadzenie kreacji od briefu do gotowego materiału. Opracowywanie scenariuszy i koncepcji wizualnych we współpracy z project managerem. Praca z materiałami o skrajnie różnej skali — od pojedynczego packshotu kosmetycznego po biblioteki 20–30 GB assetów z gier AAA. Dla każdego materiału: analiza dostępnych zasobów, budowanie koncepcji narracyjnej i wizualnej, dobór i obróbka assetów, montaż, animacja, motion design, sound design, przygotowanie do publikacji. Pełna odpowiedzialność za kreację i egzekucję — od pustego timeline\'a do gotowego wideo.' },
@@ -1358,6 +1437,7 @@ const PROJECTS = {
     title: 'Nowe Horyzonty & American Film Festival',
     type: 'images',
     desc: 'Współpraca z zespołami projektowymi jednych z największych festiwali filmowych w Europie — MFF Nowe Horyzonty, American Film Festival oraz największym kinem arthouse\'owym w Polsce — Kinem Nowe Horyzonty.<br><br>• Wspomaganie rozwoju festiwalu i pomoc w pozyskiwaniu partnerów poprzez przygotowywanie prezentacji sponsorskich i partnerskich.<br>• Tworzenie materiałów promocyjnych do druku i internetu, które zwiększają zasięg dotarcia do potencjalnych uczestników wydarzeń oraz tworzą spójny wizerunek marki.<br>• Całościowe projektowanie identyfikacji wizualnych dla wydarzeń filmowych i kulturalnych w Polsce.',
+    descEn: 'Years of co-creating the visual language of Poland\'s leading film festivals. Building visual concepts for entire editions, coordinating designers, overseeing production from idea to final layout. Working at the intersection of art direction, brand consistency and festival culture.',
     items: [
       { src: 'NOWE HORYZONTY WORKS/20036_1.7.jpg', caption: 'Współtworzenie koncepcji wizualnej całych edycji festiwalu. Prowadzenie procesu od idei przez doki artów, koordynacja pracy grafików, współpraca z agencją Homework (Warszawa) przy składzie finalnych projektów.' },
       { src: 'NOWE HORYZONTY WORKS/2516_1.7.jpg', caption: 'Współtworzenie koncepcji wizualnej całych edycji festiwalu. Prowadzenie procesu od idei przez doki artów, koordynacja pracy grafików, współpraca z agencją Homework (Warszawa) przy składzie finalnych projektów.' },
@@ -1389,6 +1469,7 @@ const PROJECTS = {
     title: 'AI Visual Experiments',
     type: 'images',
     desc: 'Moje eksploracje w stylach, promptowaniu, osiąganiu założonych estetyk i realizmu. Tworzę własne systemy promptów i dostosowuję je do wymaganych rezultatów, zarówno w formie image jak i wideo.',
+    descEn: 'Personal explorations in styles, prompting, achieving targeted aesthetics and photorealism. Experimenting with generative image direction — building original IPs, testing the commercial potential of AI visuals, developing a consistent visual language.',
     items: [
       { src: 'AI VISUAL EXPERIMENTS/02c3d85d-48f5-4b1e-bfc3-745c5ceca4b8.png', caption: 'Budowanie autorskiego IP od podstaw: koncepcja serii komiksowej o polskim Spider-Manie osadzonym w uniwersum MCU. Pełen worldbuilding — Aleks jedzie do Nowego Jorku, razem z Peterem Parkerem zostaje ukąszony, pod okiem Starka staje się Spider-Manem. Z szacunku do przyjaciela i uczucia do MJ wraca do Polski, żyje incognito na Powiślu w stałym kontakcie z Avengersami. Gdy Warszawa staje w ogniu — musi działać sam, bez wsparcia. Eksploracja tego, jak AI może służyć do prototypowania narracji komiksowej na poziomie konceptu wizualnego.' },
       { src: 'AI VISUAL EXPERIMENTS/50afaa6d-265a-4e46-a00e-083c802ccfe8.png', caption: 'Koncepcja crossoverowego IP: Predator vs. Cyberpunk 2077. Predatorzy wchodzą do Night City, polują na najsilniejszych najemników — V zostaje złapana. Badanie potencjału fanowskich crossoverów jako narzędzia budowania zaangażowania w istniejące marki.' },
@@ -1448,8 +1529,9 @@ function openGallery(key) {
 
   document.getElementById('galleryTitle').textContent = project.title;
   const descEl = document.getElementById('galleryDesc');
-  if (project.desc) {
-    descEl.innerHTML = project.desc;
+  const galleryDesc = (currentLang === 'en' && project.descEn) ? project.descEn : project.desc;
+  if (galleryDesc) {
+    descEl.innerHTML = galleryDesc;
     descEl.style.display = 'block';
   } else {
     descEl.innerHTML = '';
@@ -1485,7 +1567,7 @@ function openGallery(key) {
           + (item.divider ? 'border-top:1px solid rgba(255,255,255,0.1);' : '');
         if (item.divider) {
           sep.innerHTML = '<h3 style="font-family:var(--font-display,\'Helvetica Neue\',sans-serif);font-size:clamp(20px,3vw,32px);color:#fff;font-style:italic;margin:0 0 8px;">' + item.divider + '</h3>'
-            + (item.desc ? '<p style="font-family:var(--font-body,Georgia,serif);font-size:13px;line-height:1.7;color:rgba(255,255,255,0.6);margin:0;">' + item.desc + '</p>' : '');
+            + ((currentLang === 'en' && item.descEn ? item.descEn : item.desc) ? '<p style="font-family:var(--font-body,Georgia,serif);font-size:13px;line-height:1.7;color:rgba(255,255,255,0.6);margin:0;">' + (currentLang === 'en' && item.descEn ? item.descEn : item.desc) + '</p>' : '');
         }
         grid.appendChild(sep);
         currentSectionGrid = createSectionGrid(project.type);
@@ -1558,7 +1640,8 @@ function updateLightboxMedia() {
   const mediaItems = project.items.filter(x => typeof x === 'string' || (typeof x === 'object' && x.src));
   const item = mediaItems[currentIndex];
   const src = typeof item === 'string' ? item : item.src;
-  const caption = (typeof item === 'object' && item.caption) ? item.caption : '';
+  const captionPl = (typeof item === 'object' && item.caption) ? item.caption : '';
+  const caption = (currentLang === 'en' && captionPl && CAPTIONS_EN[captionPl]) ? CAPTIONS_EN[captionPl] : captionPl;
   const url = buildUrl(src);
 
   const captionEl = document.getElementById('lightboxCaption');
@@ -1662,7 +1745,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     <div class="about-content reveal">
       <h3 data-i18n="about-h3">Jestem twórcą obrazu, który <em>rozumie AI</em></h3>
-      <p class="about-text" data-i18n="about-p1">Mam filmowo-fotograficzną wrażliwość obrazu. Studiowałem na Wydziale Operatorskim Szkoły Filmowej, pogłębiając świadome myślenie kolorem, światłem i kompozycją.</p>
+      <p class="about-text" data-i18n="about-p1">Mam filmowo-fotograficzną wrażliwość obrazu — kształtowaną m.in. przez studia na Wydziale Operatorskim Szkoły Filmowej i lata praktycznej pracy z materiałem wideo. Nauczyłem się świadomego podejścia do koloru, światła i kompozycji.</p>
       <p class="about-text" data-i18n="about-p2">Obejrzałem tysiące kadrów filmowych, szukając relacji między znaczeniem, estetyką i emocją — dziś tę samą wrażliwość przenoszę do pracy z obrazem generowanym przez AI.</p>
       <p class="about-text" data-i18n="about-p3">Doświadczenie zdobywałem na styku kultury, technologii i branży gamingowej. Rozumiem AI nie jako skrót, ale jako proces reżyserowania obrazu, stylu i narracji.</p>
 
@@ -1676,8 +1759,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="stat-label" data-i18n="stat-brands">Globalnych marek</div>
         </div>
         <div>
-          <div class="stat-number">∞</div>
-          <div class="stat-label" data-i18n="stat-frames">Kadrów filmowych</div>
+          <div class="stat-number">70+</div>
+          <div class="stat-label" data-i18n="stat-frames">Projektów wideo</div>
         </div>
       </div>
     </div>
@@ -1804,7 +1887,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     <div class="tool-card reveal">
       <div class="tool-icon">✂️</div>
-      <div class="tool-name">Premiere Pro</div>
+      <div class="tool-name">Premiere Pro / DaVinci</div>
       <div class="tool-cat" data-i18n="tool-cat-editing">Montaż</div>
     </div>
     <div class="tool-card reveal">
@@ -1843,7 +1926,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <p class="cta-sub reveal" data-i18n="cta-sub">Szukasz kogoś, kto łączy oko filmowe z narzędziami AI?</p>
   <div class="cta-buttons reveal">
     <button class="btn btn-primary" onclick="copyEmail()" data-i18n="cta-btn">Napisz do mnie</button>
-    <a href="#" class="btn">▶ Watch Showreel</a>
+    <a href="javascript:void(0)" class="btn" onclick="openGallery('showreel')">▶ Watch Showreel</a>
   </div>
   <div id="emailCopied" style="margin-top:16px; font-family:var(--font-mono); font-size:11px; letter-spacing:2px; color:var(--accent); opacity:0; transition:opacity 0.3s; text-transform:uppercase;"></div>
 </section>
@@ -1853,7 +1936,7 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================== -->
 <footer>
   <span class="footer-name">Mateusz Rychlik</span>
-  <span class="footer-copy">©2025 — AI Video & Motion Designer</span>
+  <span class="footer-copy">©2026 — AI Video & Motion Designer</span>
 </footer>
 
 <!-- ==========================================
@@ -1916,7 +1999,7 @@ const TRANSLATIONS = {
     'nav-location': 'Wrocław, PL / ',
 
     // HERO
-    'hero-tagline': 'Tworzę materiały wideo i motion graphics przy użyciu AI — od koncepcji po gotowy plik do publikacji. Zrealizowane projekty dla Warner Bros, HBO, Netflix i Blizzard. Wykształcenie filmowe (Wydział Operatorski).',
+    'hero-tagline': 'Tworzę materiały wideo i motion graphics przy użyciu AI — od koncepcji po gotowy plik do publikacji. Zrealizowane projekty dla Warner Bros, HBO, Netflix i Blizzard. Kształciłem się m.in. na Wydziale Operatorskim Szkoły Filmowej.',
     'hero-scroll':  'Scroll',
 
     // BRANDS
@@ -1942,12 +2025,12 @@ const TRANSLATIONS = {
     // ABOUT
     'about-label':  '[ 02 — About ]',
     'about-h3':     'Jestem twórcą obrazu, który <em>rozumie AI</em>',
-    'about-p1':     'Mam filmowo-fotograficzną wrażliwość obrazu. Studiowałem na Wydziale Operatorskim Szkoły Filmowej, pogłębiając świadome myślenie kolorem, światłem i kompozycją.',
+    'about-p1':     'Mam filmowo-fotograficzną wrażliwość obrazu — kształtowaną m.in. przez studia na Wydziale Operatorskim Szkoły Filmowej i lata praktycznej pracy z materiałem wideo. Nauczyłem się świadomego podejścia do koloru, światła i kompozycji.',
     'about-p2':     'Obejrzałem tysiące kadrów filmowych, szukając relacji między znaczeniem, estetyką i emocją — dziś tę samą wrażliwość przenoszę do pracy z obrazem generowanym przez AI.',
     'about-p3':     'Doświadczenie zdobywałem na styku kultury, technologii i branży gamingowej. Rozumiem AI nie jako skrót, ale jako proces reżyserowania obrazu, stylu i narracji.',
     'stat-exp':     'Lat doświadczenia',
     'stat-brands':  'Globalnych marek',
-    'stat-frames':  'Kadrów filmowych',
+    'stat-frames':  'Projektów wideo',
 
     // PROCESS
     'process-label':'[ 03 — Proces ]',
@@ -1990,6 +2073,13 @@ const TRANSLATIONS = {
     'cta-sub':   'Szukasz kogoś, kto dowiezie materiały wideo i motion od koncepcji do publikacji — używając AI?',
     'cta-btn':   'Napisz do mnie',
 
+    // HERO
+    'hero-see-works': '↓ Zobacz prace',
+
+    // CV SKILLS
+    'cv-skills-heading': 'Umiejętności',
+    'cv-skills-list': '<li>Szeroka wiedza z zakresu tradycyjnego tworzenia grafik i ilustracji 2D/motion</li><li>Biegłe poruszanie się w świecie filmu i wideo, umiejętność tworzenia koncepcji filmowych, jak i ich realizacja w duchu social mediów i nowoczesnych mediów</li><li>Biegła znajomość programów graficznych z pakietu Adobe Creative Suite, zwłaszcza Photoshopa i Illustratora oraz Figma i podobne</li><li>Biegła znajomość pracy z modelami językowymi GPT, Claude, Gemini</li><li>Dobra znajomość narzędzi AI do generowania grafiki, takich jak Higgsfield, Gemini, Kling i więcej</li>',
+
     // CV OVERLAY
     'blob-label':     '/ o mnie',
     'cv-about-title': 'O mnie',
@@ -2030,12 +2120,11 @@ const TRANSLATIONS = {
     // ABOUT
     'about-label':  '[ 02 — About ]',
     'about-h3':     'I am an image-maker who <em>understands AI</em>',
-    'about-p1':     'I have a cinematic-photographic sensibility for the image. I studied at the Cinematography Department of Film School, developing a conscious approach to colour, light and composition.',
-    'about-p2':     'I have watched thousands of film frames, exploring the relationship between meaning, aesthetics and emotion — today I bring that same sensibility to working with AI-generated imagery.',
+    'about-p1':     'My visual sensibility was shaped — among other things — by studies at the Cinematography Department of the Film School and years of hands-on work with video. I developed a conscious approach to colour, light, and composition.',    'about-p2':     'I have watched thousands of film frames, exploring the relationship between meaning, aesthetics and emotion — today I bring that same sensibility to working with AI-generated imagery.',
     'about-p3':     'I gained my experience at the intersection of culture, technology and the gaming industry. I understand AI not as a shortcut, but as a process of directing image, style and narrative.',
     'stat-exp':     'Years of experience',
     'stat-brands':  'Global brands',
-    'stat-frames':  'Film frames',
+    'stat-frames':  'Video projects',
 
     // PROCESS
     'process-label':'[ 03 — Process ]',
@@ -2077,6 +2166,13 @@ const TRANSLATIONS = {
     'cta-title': 'Let’s create something <em>together</em>',
     'cta-sub':   'Looking for someone who delivers video and motion from concept to publication — using AI?',
     'cta-btn':   'Get in touch',
+
+    // HERO
+    'hero-see-works': '↓ See works',
+
+    // CV SKILLS
+    'cv-skills-heading': 'Skills',
+    'cv-skills-list': '<li>Broad knowledge of traditional 2D/motion graphics and illustration</li><li>Fluent in the world of film and video — able to develop cinematic concepts and execute them for social media and modern platforms</li><li>Proficient in Adobe Creative Suite, especially Photoshop and Illustrator, as well as Figma and similar tools</li><li>Proficient in working with LLMs: GPT, Claude, Gemini</li><li>Strong command of AI image generation tools including Higgsfield, Gemini, Kling and more</li>',
 
     // CV OVERLAY
     'blob-label':     '/ about',
@@ -2178,6 +2274,19 @@ function applyLang(lang) {
     PROJECTS.agencies.desc  = lang === 'en'
       ? 'Graphic and video work created for Good Taste agency — related to musician performances and concerts. I developed visual concepts, produced video edits with motion design elements, and designed static versions of creatives. This is a small selection of work realised in collaboration with them.'
       : 'Prace graficzne tworzone dla agencji Good Taste związane z występami muzyków i koncertami. Opracowywałem dla nich koncepcje graficzne, realizowałem montaż wideo wraz z elementami motion design i projektowałem statyczne wersje kreacji. To mały wycinek prac zrealizowanych we współpracy z nimi.';
+  }
+
+  // Refresh gallery desc if open (live language switch)
+  if (typeof currentProject !== 'undefined' && currentProject) {
+    const p = PROJECTS[currentProject];
+    if (p) {
+      const descEl = document.getElementById('galleryDesc');
+      if (descEl) {
+        const d = (lang === 'en' && p.descEn) ? p.descEn : p.desc;
+        descEl.innerHTML = d || '';
+        descEl.style.display = d ? 'block' : 'none';
+      }
+    }
   }
 
   // Update CV download button link and label
@@ -2417,8 +2526,8 @@ function toggleLang() {
         <span data-i18n-cv-btn>Pobierz PDF</span>
       </a>
       <div class="cv-skills">
-        <h3 class="cv-skills-heading">Umiejętności</h3>
-        <ul class="cv-skills-list">
+        <h3 class="cv-skills-heading" data-i18n="cv-skills-heading">Umiejętności</h3>
+        <ul class="cv-skills-list" data-i18n="cv-skills-list">
           <li>Szeroka wiedza z zakresu tradycyjnego tworzenia grafik i ilustracji 2D/motion</li>
           <li>Biegłe poruszanie się w świecie filmu i wideo, umiejętność tworzenia koncepcji filmowych, jak i ich realizacja w duchu social mediów i nowoczesnych mediów</li>
           <li>Biegła znajomość programów graficznych z pakietu Adobe Creative Suite, zwłaszcza Photoshopa i Illustratora oraz Figma i podobne</li>
