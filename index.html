@@ -1989,6 +1989,11 @@ const TRANSLATIONS = {
     'cta-title': 'Stwórzmy coś <em>razem</em>',
     'cta-sub':   'Szukasz kogoś, kto dowiezie materiały wideo i motion od koncepcji do publikacji — używając AI?',
     'cta-btn':   'Napisz do mnie',
+
+    // CV OVERLAY
+    'blob-label':     '/ o mnie',
+    'cv-about-title': 'O mnie',
+    'cv-about-body':  '<p>Łączę filmową wrażliwość z praktyczną znajomością narzędzi AI do generowania wideo — i to nie jako dwie osobne umiejętności, ale jeden spójny sposób pracy.</p><p>Mam filmowo-fotograficzne myślenie o obrazie — kształtowane m.in. przez studia na Wydziale Operatorskim Szkoły Filmowej i lata praktycznej pracy z materiałem wideo. Nauczyłem się świadomego podejścia do koloru, światła i kompozycji. Tę samą wrażliwość przenoszę dziś do pracy generatywnej. Rozumiem AI nie jako skrót, ale jako proces reżyserowania obrazu, stylu i narracji.</p><p>Przez lata realizowałem projekty wideo dla Stowarzyszenia Nowe Horyzonty, festiwalu Nowe Horyzonty, American Film Festival i kina Nowe Horyzonty — współtworząc ich wizualny język i estetyczne DNA. Pracowałem przy komunikacji wizualnej dla globalnych marek: Warner Bros, HBO, Netflix, Ubisoft, Blizzard, Nokia, Duolingo, HP, Philips, VARTA, Maybelline New York i La Roche-Posay.</p><p>Na co dzień pracuję z Kling, Midjourney, Higgsfield, Sora i Runway — łącząc generatywne narzędzia z After Effects i Premiere Pro. Mam za sobą ponad 70 zrealizowanych materiałów wideo.</p><p>Szukam miejsca, gdzie AI video traktuje się poważnie — i gdzie mogę wnieść zarówno warsztat techniczny, jak i myślenie wizualne.</p>',
   },
 
   en: {
@@ -2072,6 +2077,11 @@ const TRANSLATIONS = {
     'cta-title': 'Let’s create something <em>together</em>',
     'cta-sub':   'Looking for someone who delivers video and motion from concept to publication — using AI?',
     'cta-btn':   'Get in touch',
+
+    // CV OVERLAY
+    'blob-label':     '/ about',
+    'cv-about-title': 'About me',
+    'cv-about-body':  '<p>I combine a cinematographic eye with hands-on experience in AI video generation — not as two separate skills, but as one unified way of working.</p><p>My visual sensibility was shaped — among other things — by studies at the Cinematography Department of the National Film School and years of hands-on work with video. I developed a conscious approach to color, light, and composition. Today I bring that same sensibility to generative work. I see AI not as a shortcut, but as a process of directing image, style, and narrative.</p><p>Over the years I’ve delivered video projects for the New Horizons Association, New Horizons International Film Festival, American Film Festival, and New Horizons Cinema — helping shape their visual language and aesthetic identity. I’ve worked on visual communication for global brands: Warner Bros, HBO, Netflix, Ubisoft, Blizzard, Nokia, Duolingo, HP, Philips, VARTA, Maybelline New York, and La Roche-Posay.</p><p>My daily workflow includes Kling, Midjourney, Higgsfield, Sora, and Runway — combined with After Effects and Premiere Pro. I have 70+ completed video pieces in my portfolio.</p><p>I’m looking for a team that takes AI video seriously — and where I can bring both technical craft and visual thinking.</p>',
   }
 };
 
@@ -2393,7 +2403,7 @@ function toggleLang() {
   </svg>
   <div class="blob-text">
     <span>CV</span>
-    <span style="font-size:15px;opacity:0.75;">/ list</span>
+    <span style="font-size:15px;opacity:0.75;" data-i18n="blob-label">/ o mnie</span>
   </div>
 </div>
 
@@ -2418,19 +2428,15 @@ function toggleLang() {
       </div>
     </div>
     <div class="cv-right">
-      <h2 class="cv-heading">List motywacyjny</h2>
+      <h2 class="cv-heading" data-i18n="cv-about-title">O mnie</h2>
       <p class="cv-subheading">Mateusz Rychlik — AI Film Creator</p>
       <div class="cv-divider"></div>
-      <div class="cv-body">
-        <p>Szanowni Państwo,</p>
-        <p>Zgłaszam się na stanowisko AI Artist / AI Film Content Creator. Obszar łączący obraz filmowy, narzędzia generatywne i narrację wizualną to naturalny kierunek mojego rozwoju — i dokładnie to, czym zajmuję się na co dzień.</p>
-        <p>Mam filmowo-fotograficzną wrażliwość obrazu. Studiowałem na Wydziale Operatorskim Szkoły Filmowej, pogłębiając świadome myślenie kolorem, światłem i kompozycją. Obejrzałem tysiące kadrów filmowych, szukając relacji między znaczeniem, estetyką i emocją — dziś tę samą wrażliwość przenoszę do pracy z obrazem generowanym przez AI.</p>
-        <p>Na co dzień pracuję z narzędziami generatywnymi do tworzenia obrazu i wideo. Tworzę i montuję materiały wideo, przygotowuję zestawy wizualne do kampanii, social mediów i prezentacji — łącząc podejście projektowe z myśleniem filmowym.</p>
-        <p>Przez lata realizowałem materiały wideo m.in. dla Stowarzyszenia Nowe Horyzonty, festiwalu Nowe Horyzonty, American Film Festival oraz kina Nowe Horyzonty, współtworząc ich wizualny język i estetyczne DNA.</p>
-        <p>Równolegle pracowałem przy projektach reklamowych i komunikacji wizualnej dla globalnych marek: Warner Bros, HBO, Netflix, Ubisoft, Blizzard, Nokia, Duolingo, HP, Philips, VARTA, Maybelline New York i La Roche-Posay — współtworząc materiały związane m.in. z tytułami Harry Potter, Gra o Tron i Assassin&apos;s Creed.</p>
-        <p>Doświadczenie zdobywałem na styku kultury, technologii i branży gamingowej. Nauczyło mnie to pracy w szybko zmieniającym się środowisku i świadomego dobierania narzędzi do zamierzonego efektu. Rozumiem AI nie jako skrót, ale jako proces reżyserowania obrazu, stylu i narracji.</p>
-        <p>W załączeniu przesyłam portfolio oraz przykłady prac wideo. Chętnie opowiem o swoim procesie twórczym podczas rozmowy.</p>
-        <div class="cv-signature">Z wyrazami szacunku,<br>Mateusz Rychlik</div>
+      <div class="cv-body" data-i18n="cv-about-body">
+        <p>Łączę filmową wrażliwość z praktyczną znajomością narzędzi AI do generowania wideo — i to nie jako dwie osobne umiejętności, ale jeden spójny sposób pracy.</p>
+        <p>Mam filmowo-fotograficzne myślenie o obrazie — kształtowane m.in. przez studia na Wydziale Operatorskim Szkoły Filmowej i lata praktycznej pracy z materiałem wideo. Nauczyłem się świadomego podejścia do koloru, światła i kompozycji. Tę samą wrażliwość przenoszę dziś do pracy generatywnej. Rozumiem AI nie jako skrót, ale jako proces reżyserowania obrazu, stylu i narracji.</p>
+        <p>Przez lata realizowałem projekty wideo dla Stowarzyszenia Nowe Horyzonty, festiwalu Nowe Horyzonty, American Film Festival i kina Nowe Horyzonty — współtworząc ich wizualny język i estetyczne DNA. Pracowałem przy komunikacji wizualnej dla globalnych marek: Warner Bros, HBO, Netflix, Ubisoft, Blizzard, Nokia, Duolingo, HP, Philips, VARTA, Maybelline New York i La Roche-Posay.</p>
+        <p>Na co dzień pracuję z Kling, Midjourney, Higgsfield, Sora i Runway — łącząc generatywne narzędzia z After Effects i Premiere Pro. Mam za sobą ponad 70 zrealizowanych materiałów wideo.</p>
+        <p>Szukam miejsca, gdzie AI video traktuje się poważnie — i gdzie mogę wnieść zarówno warsztat techniczny, jak i myślenie wizualne.</p>
       </div>
     </div>
   </div>
