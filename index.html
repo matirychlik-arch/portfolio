@@ -482,6 +482,15 @@ section {
   max-width: 480px;
 }
 
+.project-tools-line {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
 .project-arrow {
   position: absolute;
   top: 24px;
@@ -1118,36 +1127,38 @@ footer {
   <h2 class="section-title reveal" data-i18n="work-title">Wybrane <em>projekty</em></h2>
 
   <div class="work-grid">
-    <!-- Project 1: Large — The Knights of U & Cyrulicy -->
-    <div class="project-card project-card-large reveal" onclick="openGallery('knights')" style="cursor:pointer;">
-      <div class="project-image" style="padding:0; overflow:hidden; position:relative;">
-        <video class="knights-preview" src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/VIDEOS%20THE%20KNIGHTS%20OF%20U%20%26%20CYRULICY/Death%20Roads%20trailer%202.mp4" poster="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/frame%201%20knights.png" muted loop playsinline preload="auto" style="width:100%; height:100%; object-fit:cover; display:block;"></video>
+    <!-- Project 1: Large — Kampanie Vidsy -->
+    <div class="project-card project-card-large reveal" onclick="openGallery('vidsy')" style="cursor:pointer;">
+      <div class="project-image" style="padding:0; overflow:hidden;">
+        <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/frame%201%20vidsy.png" alt="Kampanie Vidsy" style="width:100%; height:100%; object-fit:cover; display:block;">
       </div>
       <div class="project-info">
         <div class="project-tags">
-          <span class="project-tag">Video</span>
-          <span class="project-tag">Commercial</span>
+          <span class="project-tag">Campaign</span>
           <span class="project-tag">Motion</span>
         </div>
-        <h3 class="project-name">The Knights of U & Cyrulicy</h3>
-        <p class="project-desc" data-i18n="desc-knights">Produkcja wideo — trailery dla studia gamingowego i materiały dla brandu kosmetycznego.</p>
+        <h3 class="project-name" data-i18n="name-vidsy">Kampanie Vidsy</h3>
+        <p class="project-tools-line">After Effects · Premiere Pro</p>
+        <p class="project-desc" data-i18n="desc-vidsy">Materiały wizualne i motion do kampanii Warcraft, Harry Potter, Gra o Tron, Assassin's Creed i wiele innych</p>
       </div>
       <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
     </div>
 
     <div class="work-small-grid">
-      <!-- Project 2 — Kampanie Vidsy -->
-      <div class="project-card reveal" onclick="openGallery('vidsy')" style="cursor:pointer;">
-        <div class="project-image" style="padding:0; overflow:hidden;">
-          <img src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/frame%201%20vidsy.png" alt="Kampanie Vidsy" style="width:100%; height:100%; object-fit:cover; display:block;">
+      <!-- Project 2 — The Knights of U & Cyrulicy -->
+      <div class="project-card reveal" onclick="openGallery('knights')" style="cursor:pointer;">
+        <div class="project-image" style="padding:0; overflow:hidden; position:relative;">
+          <video class="knights-preview" src="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/VIDEOS%20THE%20KNIGHTS%20OF%20U%20%26%20CYRULICY/Death%20Roads%20trailer%202.mp4" poster="https://raw.githubusercontent.com/matirychlik-arch/portfolio/main/frame%201%20knights.png" muted loop playsinline preload="auto" style="width:100%; height:100%; object-fit:cover; display:block;"></video>
         </div>
         <div class="project-info">
           <div class="project-tags">
-            <span class="project-tag">Campaign</span>
+            <span class="project-tag">Video</span>
+            <span class="project-tag">Commercial</span>
             <span class="project-tag">Motion</span>
           </div>
-          <h3 class="project-name" data-i18n="name-vidsy">Kampanie Vidsy</h3>
-          <p class="project-desc" data-i18n="desc-vidsy">Materiały wizualne i motion do kampanii Warcraft, Harry Potter, Gra o Tron, Assassin's Creed i wiele innych</p>
+          <h3 class="project-name">The Knights of U & Cyrulicy</h3>
+          <p class="project-tools-line">Premiere Pro · After Effects · AI</p>
+          <p class="project-desc" data-i18n="desc-knights">Produkcja wideo — trailery dla studia gamingowego i materiały dla brandu kosmetycznego.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
       </div>
@@ -1163,6 +1174,7 @@ footer {
             <span class="project-tag">Video</span>
           </div>
           <h3 class="project-name" data-i18n="name-festivale">Nowe Horyzonty & American Film Festival</h3>
+          <p class="project-tools-line">Premiere Pro · Motion · Figma</p>
           <p class="project-desc" data-i18n="desc-festivale">Lata współtworzenia wizualnego języka jednych z najważniejszych festiwali filmowych w Polsce.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1183,6 +1195,7 @@ footer {
             <span class="project-tag">Direction</span>
           </div>
           <h3 class="project-name" data-i18n="name-ai">AI Visual Experiments</h3>
+          <p class="project-tools-line">Midjourney · Flux · Nano Banana</p>
           <p class="project-desc" data-i18n="desc-ai">Autorskie eksperymenty z obrazem generatywnym — reżyserowanie stylu, nastroju i narracji wizualnej przy pomocy narzędzi AI.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1200,6 +1213,7 @@ footer {
             <span class="project-tag">Agency</span>
           </div>
           <h3 class="project-name" data-i18n="name-agencies">Good Taste Agency</h3>
+          <p class="project-tools-line">Premiere Pro · After Effects</p>
           <p class="project-desc" data-i18n="desc-agencies">Materiały wideo i motion design dla agencji muzycznej Good Taste — kreacje dla muzyków i wydarzeń koncertowych. Montaż, motion design, przygotowanie do publikacji.</p>
         </div>
         <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1219,6 +1233,7 @@ footer {
           <span class="project-tag">Film</span>
         </div>
         <h3 class="project-name" data-i18n="name-showreel">AI Film Showreel 2025</h3>
+        <p class="project-tools-line">Kling · Higgsfield · Premiere Pro</p>
         <p class="project-desc" data-i18n="desc-showreel">Kompilacja prac łączących narzędzia generatywne z filmowym podejściem do kadru, światła i narracji. Od konceptu do finalnego obrazu.</p>
       </div>
       <span class="project-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
@@ -1779,7 +1794,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="tools-grid">
     <div class="tool-card reveal">
       <div class="tool-icon">🎬</div>
-      <div class="tool-name">Kling / Sora / Higgsfield</div>
+      <div class="tool-name">Kling / Sora / Higgsfield / Runway</div>
       <div class="tool-cat">AI Video</div>
     </div>
     <div class="tool-card reveal">
@@ -1828,6 +1843,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <p class="cta-sub reveal" data-i18n="cta-sub">Szukasz kogoś, kto łączy oko filmowe z narzędziami AI?</p>
   <div class="cta-buttons reveal">
     <button class="btn btn-primary" onclick="copyEmail()" data-i18n="cta-btn">Napisz do mnie</button>
+    <a href="#" class="btn">▶ Watch Showreel</a>
   </div>
   <div id="emailCopied" style="margin-top:16px; font-family:var(--font-mono); font-size:11px; letter-spacing:2px; color:var(--accent); opacity:0; transition:opacity 0.3s; text-transform:uppercase;"></div>
 </section>
@@ -1838,11 +1854,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <footer>
   <span class="footer-name">Mateusz Rychlik</span>
   <span class="footer-copy">©2025 — AI Video & Motion Designer</span>
-  <div class="footer-links">
-    <a href="#" onclick="copyEmail(); return false;">Email</a>
-    <a href="#">YouTube</a>
-    <a href="#">Instagram</a>
-  </div>
 </footer>
 
 <!-- ==========================================
