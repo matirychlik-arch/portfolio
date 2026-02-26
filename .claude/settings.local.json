@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8765/)",
+      "Bash(awk 'NR>=1274 && NR<=1734' /Users/mati/Documents/GitHub/portfolio/index.html)",
+      "Bash(node --check /tmp/script1_fixed.js)",
+      "Bash(awk 'NR>=1274 && NR<=1734' /Users/mati/Documents/GitHub/portfolio/index.html awk 'NR>=1947 && NR<=2304' /Users/mati/Documents/GitHub/portfolio/index.html awk 'NR>=2555 && NR<=2794' /Users/mati/Documents/GitHub/portfolio/index.html echo \"Script 1:\")",
+      "Bash(node --check /tmp/s1.js)",
+      "Bash(node --check /tmp/s2.js)",
+      "Bash(node --check /tmp/s4.js)"
+    ]
+  }
+}
