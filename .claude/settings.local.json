@@ -12,7 +12,11 @@
       "Bash(curl -s \"https://api.github.com/repos/matirychlik-arch/portfolio/pages\")",
       "Bash(python3:*)",
       "Bash(curl -s \"https://api.github.com/repos/matirychlik-arch/portfolio/contents/AI%20VISUAL%20EXPERIMENTS\")",
-      "Bash(curl -s \"https://api.github.com/repos/matirychlik-arch/portfolio/contents/SCREENY%20DO%20HOME\")"
+      "Bash(curl -s \"https://api.github.com/repos/matirychlik-arch/portfolio/contents/SCREENY%20DO%20HOME\")",
+      "WebFetch(domain:www.pracuj.pl)",
+      "WebFetch(domain:tether.to)",
+      "WebFetch(domain:careers.publicisgroupe.com)",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/121.0.0.0 Safari/537.36\" \"https://www.pracuj.pl/praca/ai-artist-ai-film-content-creator-bydgoszcz-towarowa-36,oferta,1004651683\")"
     ]
   }
 }
