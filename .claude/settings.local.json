@@ -9,7 +9,8 @@
       "Bash(node --check /tmp/s2.js)",
       "Bash(node --check /tmp/s4.js)",
       "Bash(gh api repos/matirychlik-arch/portfolio/pages)",
-      "Bash(curl -s \"https://api.github.com/repos/matirychlik-arch/portfolio/pages\")"
+      "Bash(curl -s \"https://api.github.com/repos/matirychlik-arch/portfolio/pages\")",
+      "Bash(python3:*)"
     ]
   }
 }
