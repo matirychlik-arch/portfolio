@@ -2761,5 +2761,23 @@ document.addEventListener('keydown', function(e) {
 })();
 
 </script>
+
+<script>
+// Auto-open gallery from URL hash, e.g. #showreel
+(function() {
+  function openFromHash() {
+    var hash = window.location.hash.replace('#', '');
+    if (hash && typeof openGallery === 'function') {
+      openGallery(hash);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', openFromHash);
+  } else {
+    openFromHash();
+  }
+  window.addEventListener('hashchange', openFromHash);
+})();
+</script>
 </body>
 </html>
